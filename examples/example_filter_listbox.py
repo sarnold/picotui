@@ -4,7 +4,7 @@
 #
 from picotui.screen import *
 from picotui.widgets import *
-
+from picotui.defs import *
 
 if __name__ == "__main__":
 
