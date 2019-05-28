@@ -11,6 +11,7 @@ __all__ = (
     "EditableWidget",
     "Dialog",
     "WLabel",
+    "WProgress",
     "WFrame",
     "WButton",
     "WCheckbox",
@@ -164,6 +165,22 @@ class WLabel(Widget):
         self.wr_fixedw(self.t, self.w)
         self.attr_reset()
 
+
+class WProgress(Widget):
+
+    def __init__(self, text, w=10):
+        self.t = text
+        self.h = 1
+        self.w = w
+
+    def redraw(self):
+        self.goto(self.x, self.y)
+        self.wr_fixedw(self.t, self.w)
+        self.attr_reset()
+
+    def update(self, text):
+        self.t = text
+        self.redraw()
 
 class WFrame(Widget):
 
