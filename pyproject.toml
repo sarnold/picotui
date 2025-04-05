@@ -54,9 +54,9 @@ cov = [
 doc = [
     "sphinx",
     "sphinx_git",
-    "recommonmark",
+    "sphinx-autoapi",
     "sphinx_rtd_theme",
-    "sphinxcontrib-apidoc",
+    "recommonmark",
 ]
 test = [
     "pytest",
@@ -88,6 +88,30 @@ log_cli =  true
 doctest_optionflags = ["ELLIPSIS", "NORMALIZE_WHITESPACE",]
 addopts = "--strict-markers"
 markers = "subscript"
+
+[tool.coverage.run]
+branch = true
+source = ["picotui"]
+omit = [
+    "examples/*",
+    "tests/*",
+    "setup.py",
+    ".tox",
+]
+[tool.coverage.paths]
+source = ["picotui"]
+
+[tool.coverage.report]
+fail_under = 15
+show_missing = true
+ignore_errors = true
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "raise AssertionError",
+    "if typing.TYPE_CHECKING:",
+    "if TYPE_CHECKING:",
+]
 
 [tool.black]
 line-length = 90

@@ -1,5 +1,5 @@
 Categories of widgets
----------------------
+=====================
 
 Focusable vs non-focusable
 
@@ -10,6 +10,7 @@ accept user input, and the rest of standard widgets are such.
 Widgets can be tested for focusability using w.focusable property.
 
 Editable vs non-editable
+------------------------
 
 Focusable widgets are subdivided into editable vs non-editable. Editable
 widgets contain state which a user can change. Non-editable widgets
@@ -17,29 +18,32 @@ are intended to execute actions on user interaction. Examples of
 non-editable widgets are WButton, WMenuBar, WMenuBox.
 
 Choice widgets
+--------------
 
 A subset of editable widgets are choice widgets. They deal with selecting
 one of the items among a number of choices. WRadioButton, WListBox and
 WDropDown are choice widgets. For consistency, it makes sense to treat
 WCheckbox as a choice widget too, with choices being False and True.
 
-BaseWidget
-  Non-focusable
-    WLabel
-    WFrame
-  Focusable
-    Non-editable
-      WButton
-      WMenuBar
-      WMenuBox
-    Editable
-      Choice widget
-        WCheckbox
-        WRadioButton
-        WListBox
-        WDropDown
-        WCompletionList
-      Non-choice widget
-        WTextEntry
-        WMultiLine
-        WAutoComplete
+Widget hierarchy::
+
+  BaseWidget
+    Non-focusable
+      WLabel
+      WFrame
+    Focusable
+      Non-editable
+        WButton
+        WMenuBar
+        WMenuBox
+      Editable
+        Choice widget
+          WCheckbox
+          WRadioButton
+          WListBox
+          WDropDown
+          WCompletionList
+        Non-choice widget
+          WTextEntry
+          WMultiLine
+          WAutoComplete
