@@ -10,7 +10,11 @@ name = "picotui"
 description = "A simple text user interface (TUI) library."
 dynamic = ["version"]
 readme = "README.rst"
-license = {file = "LICENSE"}
+
+# legacy bits and new both fail in different versions
+# need workaround until PEP639 has more backend support
+license = "MIT"
+#license = {file = "LICENSE"}
 
 authors = [
     {name = "Paul Sokolovsky"},
@@ -118,3 +122,7 @@ ensure_newline_before_comments = true
 
 [tool.mypy]
 exclude =  [".tox"]
+
+[tool.bandit]
+exclude_dirs = ["docs", "tests"]
+skips = ["B101"]

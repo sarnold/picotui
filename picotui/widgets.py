@@ -561,7 +561,7 @@ class WCompletionList(WPopupList):
 
 class WAutoComplete(WComboBox):
 
-    popup_class = WCompletionList
+    popup_class = WCompletionList  # type: ignore
 
     def get_choices(self, substr, only_prefix=False):
         substr = substr.lower()
