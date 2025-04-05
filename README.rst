@@ -1,6 +1,12 @@
 picotui
 =======
 
+|ci| |wheels| |conda| |coverage| |release|
+
+|pre| |reuse| |cov| |pylint|
+
+|tag| |license| |python| |contributors|
+
 Picotui is a Text User Interface (TUI) widget library for Python3.
 It is known to work with CPython3 and
 `Pycopy <https://github.com/pfalcon/pycopy>`_ (Unix version is
@@ -98,3 +104,56 @@ distributions, e.g. Ubuntu, are known to have a broken Unicode font
 installed by default, which causes various visual artifacts (specifically,
 Ubuntu Mono font isn't really monospace - many Unicode pseudographic
 characters have double (or so) width, box-drawing symbols have gaps, etc.)
+
+
+.. |ci| image:: https://github.com/sarnold/picotui/actions/workflows/ci.yml/badge.svg
+    :target: https://github.com/sarnold/picotui/actions?query=workflow:CI
+    :alt: CI Status
+
+.. |wheels| image:: https://github.com/sarnold/picotui/workflows/Wheels/badge.svg
+    :target: https://github.com/sarnold/picotui/actions?query=workflow:Wheels
+    :alt: Wheel Status
+
+.. |conda| image:: https://github.com/sarnold/picotui/workflows/Conda/badge.svg
+    :target: https://github.com/sarnold/picotui/actions?query=workflow:Conda
+    :alt: Conda Status
+
+.. |coverage| image:: https://github.com/sarnold/picotui/actions/workflows/coverage.yml/badge.svg
+    :target: https://github.com/sarnold/picotui/actions/workflows/coverage.yml
+    :alt: Coverage Status
+
+.. |release| image:: https://github.com/sarnold/picotui/workflows/Release/badge.svg
+    :target: https://github.com/sarnold/picotui/actions?query=workflow:Release
+    :alt: Release Status
+
+.. |cov| image:: https://raw.githubusercontent.com/sarnold/picotui/badges/main/test-coverage.svg
+    :target: https://github.com/sarnold/picotui/
+    :alt: Test coverage
+
+.. |pylint| image:: https://raw.githubusercontent.com/sarnold/picotui/badges/main/pylint-score.svg
+    :target: https://github.com/sarnold/picotui/actions/workflows/pylint.yml
+    :alt: Pylint Score
+
+.. |reuse| image:: https://api.reuse.software/badge/git.fsfe.org/reuse/api
+    :target: https://api.reuse.software/info/git.fsfe.org/reuse/api
+    :alt: REUSE status
+
+.. |license| image:: https://img.shields.io/pypi/l/picotui?color=blue
+    :target: https://github.com/sarnold/picotui/blob/master/LICENSE
+    :alt: License
+
+.. |tag| image:: https://img.shields.io/github/v/tag/sarnold/picotui?color=blue&include_prereleases&label=latest%20release
+    :target: https://github.com/sarnold/picotui/releases
+    :alt: GitHub tag (latest SemVer, including pre-release)
+
+.. |python| image:: https://img.shields.io/badge/python-3.6+-blue.svg
+    :target: https://www.python.org/downloads/
+    :alt: Python
+
+.. |pre| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
+   :target: https://github.com/pre-commit/pre-commit
+   :alt: pre-commit
+
+.. |contributors| image:: https://img.shields.io/github/contributors/sarnold/picotui
+   :target: https://github.com/sarnold/picotui
+   :alt: Contributors
