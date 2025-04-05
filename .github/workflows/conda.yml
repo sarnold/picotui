@@ -1,0 +1,51 @@
+name: Conda
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ubuntu-22.04, windows-latest, macos-latest]
+        python-version: [3.9, '3.11', '3.13']
+    runs-on: ${{ matrix.platform }}
+    permissions:
+      contents: read
+    # The setup-miniconda action needs this to activate miniconda
+    defaults:
+      run:
+        shell: "bash -l {0}"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cache conda
+        uses: actions/cache@v4
+        with:
+          path: ~/conda_pkgs_dir
+          key: ${{matrix.os}}-conda-pkgs-${{hashFiles('**/conda/meta.yaml')}}
+
+      - name: Get conda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge
+          channel-priority: flexible
+          use-only-tar-bz2: true
+          auto-activate-base: true
+
+      - name: Prepare
+        run: conda install conda-build conda-verify
+
+      - name: Build
+        run: conda build conda
+
+      - name: Install
+        run: conda install -c ${CONDA_PREFIX}/conda-bld/ picotui
