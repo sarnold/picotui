@@ -1,4 +1,5 @@
 import unittest
+
 from picotui.widgets import WListBox
 from picotui.defs import KEY_DOWN
 from picotui.context import Context
@@ -24,3 +25,7 @@ class WListBoxTest(unittest.TestCase):
             users = [User('admin', 30), User('root', 27)]
             widget = UserListBox(width=5, height=5, items=users)
             self.assertIsNone(widget.handle_key(KEY_DOWN))
+
+
+if __name__ == '__main__':
+    unittest.main()
