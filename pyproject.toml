@@ -13,8 +13,9 @@ readme = "README.rst"
 
 # legacy bits and new both fail in different versions
 # need workaround until PEP639 has more backend support
-license = "MIT"
-#license = {file = "LICENSE"}
+# for now, use deprecated format for conda compatibility
+#license = "MIT"
+license = {"text" = "MIT"}
 
 authors = [
     {name = "Paul Sokolovsky"},
