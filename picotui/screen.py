@@ -1,5 +1,6 @@
 import os
 import signal
+import sys
 
 
 class Screen:
@@ -119,13 +120,15 @@ class Screen:
     @classmethod
     def init_tty(cls):
         import tty, termios
-        cls.org_termios = termios.tcgetattr(0)
-        tty.setraw(0)
+        fd = sys.stdin.fileno()
+        cls.org_termios = termios.tcgetattr(fd)
+        tty.setraw(fd)
 
     @classmethod
     def deinit_tty(cls):
         import termios
-        termios.tcsetattr(0, termios.TCSANOW, cls.org_termios)
+        fd = sys.stdin.fileno()
+        termios.tcsetattr(fd, termios.TCSANOW, cls.org_termios)
 
     @classmethod
     def enable_mouse(cls):
