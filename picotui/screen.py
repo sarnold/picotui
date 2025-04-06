@@ -1,5 +1,4 @@
 import os
-import pty
 import signal
 
 
@@ -120,16 +119,13 @@ class Screen:
     @classmethod
     def init_tty(cls):
         import tty, termios
-        # Create new tty to handle ioctl errors in termios
-        _, slave_fd = pty.openpty()
-        cls.org_termios = termios.tcgetattr(slave_fd)
-        tty.setraw(slave_fd)
+        cls.org_termios = termios.tcgetattr(0)
+        tty.setraw(0)
 
     @classmethod
     def deinit_tty(cls):
         import termios
-        _, slave_fd = pty.openpty()
-        termios.tcsetattr(slave_fd, termios.TCSANOW, cls.org_termios)
+        termios.tcsetattr(0, termios.TCSANOW, cls.org_termios)
 
     @classmethod
     def enable_mouse(cls):
