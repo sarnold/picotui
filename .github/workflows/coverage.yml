@@ -178,7 +178,7 @@ jobs:
     - name: Check code coverage
       id: coverage
       env:
-        VALUE: "Branch Rate"
+        VALUE: "Line Rate"
       run: |
         COVERAGE=$( cat code-coverage-results.txt | grep -e ^Summary | grep -o -E "${VALUE} = .{3}" | egrep -o '([0-9]+)' )
         echo "coverage=${COVERAGE}" >> $GITHUB_OUTPUT
@@ -261,7 +261,7 @@ jobs:
         COVERAGE: ${{ needs.test.outputs.coverage }}
         BASE_COVERAGE: ${{ needs.test.outputs.coverage-base }}
         DELTA_WORD: "not change"
-        RATE: "Branch Rate"
+        RATE: "Line Rate"
 
       run: |
         if [ "${COVERAGE}" -gt "${BASE_COVERAGE}" ]
