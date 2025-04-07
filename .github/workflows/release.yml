@@ -17,6 +17,10 @@ jobs:
       contents: read
     uses: ./.github/workflows/wheels.yml
 
+  build_docs:
+    name: Build docs
+    uses: ./.github/workflows/sphinx.yml
+
   create_release:
     name: Create Release
     needs: [build_wheels]
@@ -53,7 +57,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ env.VERSION }}
-          name: Release v${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
           body_path: CHANGES.md
           draft: false
           prerelease: false

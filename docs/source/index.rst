@@ -9,11 +9,13 @@ picotui docs
     :untracked:
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
     :caption: Contents:
 
     README
     widgets
+    CHANGELOG
+
 
 Indices and tables
 ==================
