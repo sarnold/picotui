@@ -1,12 +1,13 @@
 import os
 import signal
+import sys
 
 
 class Screen:
 
     @staticmethod
     def wr(s):
-        # TODO: When Python is 3.5, update this to use only bytes
+        # TODO: Update this to use only bytes
         if isinstance(s, str):
             s = bytes(s, "utf-8")
         os.write(1, s)
@@ -16,7 +17,7 @@ class Screen:
         # Write string in a fixed-width field
         s = s[:width]
         Screen.wr(s)
-        Screen.wr(" " * (width - len(s)))
+        Screen.wr(b" " * (width - len(s)))
         # Doesn't work here, as it doesn't advance cursor
         #Screen.clear_num_pos(width - len(s))
 
@@ -26,8 +27,7 @@ class Screen:
 
     @staticmethod
     def goto(x, y):
-        # TODO: When Python is 3.5, update this to use bytes
-        Screen.wr("\x1b[%d;%dH" % (y + 1, x + 1))
+        Screen.wr(b"\x1b[%d;%dH" % (y + 1, x + 1))
 
     @staticmethod
     def clear_to_eol():
@@ -37,25 +37,24 @@ class Screen:
     @staticmethod
     def clear_num_pos(num):
         if num > 0:
-            Screen.wr("\x1b[%dX" % num)
+            Screen.wr(b"\x1b[%dX" % num)
 
     @staticmethod
     def attr_color(fg, bg=-1):
         if bg == -1:
             bg = fg >> 4
             fg &= 0xf
-        # TODO: Switch to b"%d" % foo when py3.5 is everywhere
         if bg is None:
             if (fg > 8):
-                Screen.wr("\x1b[%d;1m" % (fg + 30 - 8))
+                Screen.wr(b"\x1b[%d;1m" % (fg + 30 - 8))
             else:
-                Screen.wr("\x1b[%dm" % (fg + 30))
+                Screen.wr(b"\x1b[%dm" % (fg + 30))
         else:
             assert bg <= 8
             if (fg > 8):
-                Screen.wr("\x1b[%d;%d;1m" % (fg + 30 - 8, bg + 40))
+                Screen.wr(b"\x1b[%d;%d;1m" % (fg + 30 - 8, bg + 40))
             else:
-                Screen.wr("\x1b[0;%d;%dm" % (fg + 30, bg + 40))
+                Screen.wr(b"\x1b[0;%d;%dm" % (fg + 30, bg + 40))
 
     @staticmethod
     def attr_reset():
@@ -99,7 +98,7 @@ class Screen:
 
     def clear_box(self, left, top, width, height):
         # doesn't work
-        #self.wr("\x1b[%s;%s;%s;%s$z" % (top + 1, left + 1, top + height, left + width))
+        # self.wr(b"\x1b[%s;%s;%s;%s$z" % (top + 1, left + 1, top + height, left + width))
         s = b" " * width
         bottom = top + height
         while top < bottom:
@@ -119,13 +118,17 @@ class Screen:
     @classmethod
     def init_tty(cls):
         import tty, termios
-        cls.org_termios = termios.tcgetattr(0)
-        tty.setraw(0)
+        fd = sys.stdin.fileno()
+        if fd is not None and os.isatty(fd):
+            cls.org_termios = termios.tcgetattr(fd)
+            tty.setraw(fd)
 
     @classmethod
     def deinit_tty(cls):
         import termios
-        termios.tcsetattr(0, termios.TCSANOW, cls.org_termios)
+        fd = sys.stdin.fileno()
+        if fd is not None and os.isatty(fd):
+            termios.tcsetattr(0, termios.TCSANOW, cls.org_termios)
 
     @classmethod
     def enable_mouse(cls):
