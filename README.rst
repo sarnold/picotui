@@ -84,6 +84,11 @@ A: Sure:
 Documentation
 -------------
 
+.. tip:: Try the new Sphinx `docs build`_!
+
+.. _docs build: https://sarnold.github.io/picotui/
+
+
 Picotui is an experimental WIP project, and the best documentation currently
 is the source code (https://github.com/pfalcon/picotui/tree/master/picotui)
 and examples (see below).
@@ -104,6 +109,46 @@ distributions, e.g. Ubuntu, are known to have a broken Unicode font
 installed by default, which causes various visual artifacts (specifically,
 Ubuntu Mono font isn't really monospace - many Unicode pseudographic
 characters have double (or so) width, box-drawing symbols have gaps, etc.)
+
+SBOM and license info
+=====================
+
+Licensed under the `MIT License`_ as documented in ``REUSE.toml``.
+
+This project is now compliant with the REUSE Specification Version 3.3,
+and the corresponding license information for all files can be found in
+the ``REUSE.toml`` configuration file with license text(s) in the
+``LICENSES/`` folder.
+
+Related metadata can be (re)generated with the following tools and
+command examples.
+
+* reuse-tool_ - REUSE_ compliance linting and sdist (source files) SBOM generation
+* sbom4python_ - generate SBOM with full dependency chain
+
+Commands
+--------
+
+Use tox to create the environment and run the lint command::
+
+  $ tox -e reuse                      # to run reuse lint   --or--
+  $ tox -e reuse -- spdx > sbom.txt   # generate sdist files sbom
+
+Note you can pass any of the other reuse commands after the ``--`` above.
+
+Use the above environment to generate the full SBOM in text format::
+
+  $ source .tox/reuse/bin/activate
+  $ sbom4python --system --use-pip -o <file_name>.txt
+
+Be patient; the last command above may take several minutes. See the
+doc links above for more detailed information on the tools and
+specifications.
+
+.. _reuse-tool: https://github.com/fsfe/reuse-tool
+.. _REUSE: https://reuse.software/spec-3.3/
+.. _sbom4python: https://github.com/anthonyharrison/sbom4python
+.. _MIT License: LICENSES/
 
 
 .. |ci| image:: https://github.com/sarnold/picotui/actions/workflows/ci.yml/badge.svg
@@ -126,11 +171,11 @@ characters have double (or so) width, box-drawing symbols have gaps, etc.)
     :target: https://github.com/sarnold/picotui/actions?query=workflow:Release
     :alt: Release Status
 
-.. |cov| image:: https://raw.githubusercontent.com/sarnold/picotui/badges/main/test-coverage.svg
-    :target: https://github.com/sarnold/picotui/
+.. |cov| image:: https://raw.githubusercontent.com/sarnold/picotui/badges/master/test-coverage.svg
+    :target: https://github.com/sarnold/picotui/actions/workflows/coverage.yml
     :alt: Test coverage
 
-.. |pylint| image:: https://raw.githubusercontent.com/sarnold/picotui/badges/main/pylint-score.svg
+.. |pylint| image:: https://raw.githubusercontent.com/sarnold/picotui/badges/master/pylint-score.svg
     :target: https://github.com/sarnold/picotui/actions/workflows/pylint.yml
     :alt: Pylint Score
 
