@@ -330,7 +330,7 @@ jobs:
       uses: emibcn/badge-action@808173dd03e2f30c980d03ee49e181626088eee8  # v2.0.3
       id: badge
       with:
-        label: 'Branch Coverage'
+        label: 'Line Coverage'
         status: ${{ needs.test.outputs.coverage-rounded-display }}
         color: ${{
           needs.test.outputs.coverage > 90 && 'green'              ||
