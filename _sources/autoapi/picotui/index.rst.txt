@@ -1,0 +1,23 @@
+picotui
+=======
+
+.. py:module:: picotui
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/picotui/basewidget/index
+   /autoapi/picotui/context/index
+   /autoapi/picotui/defs/index
+   /autoapi/picotui/dialogs/index
+   /autoapi/picotui/editor/index
+   /autoapi/picotui/editorext/index
+   /autoapi/picotui/menu/index
+   /autoapi/picotui/screen/index
+   /autoapi/picotui/widgets/index
+
+

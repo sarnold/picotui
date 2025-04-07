@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Categories of widgets &#8212; picotui 1.2.2.dev27 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    
+    <script src="_static/documentation_options.js?v=d4331690"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="autoapi/index.html" />
+    <link rel="prev" title="picotui" href="README.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="autoapi/index.html" title="API Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="picotui"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">picotui 1.2.2.dev27 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Categories of widgets</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="categories-of-widgets">
+<h1>Categories of widgets<a class="headerlink" href="#categories-of-widgets" title="Link to this heading">¶</a></h1>
+<p>Focusable vs non-focusable</p>
+<p>Non-focusable widgets are essentially a decoration. Examples are WLabel
+and WFrame. Focusable are widgets which can be tabbed and which can
+accept user input, and the rest of standard widgets are such.</p>
+<p>Widgets can be tested for focusability using w.focusable property.</p>
+<section id="editable-vs-non-editable">
+<h2>Editable vs non-editable<a class="headerlink" href="#editable-vs-non-editable" title="Link to this heading">¶</a></h2>
+<p>Focusable widgets are subdivided into editable vs non-editable. Editable
+widgets contain state which a user can change. Non-editable widgets
+are intended to execute actions on user interaction. Examples of
+non-editable widgets are WButton, WMenuBar, WMenuBox.</p>
+</section>
+<section id="choice-widgets">
+<h2>Choice widgets<a class="headerlink" href="#choice-widgets" title="Link to this heading">¶</a></h2>
+<p>A subset of editable widgets are choice widgets. They deal with selecting
+one of the items among a number of choices. WRadioButton, WListBox and
+WDropDown are choice widgets. For consistency, it makes sense to treat
+WCheckbox as a choice widget too, with choices being False and True.</p>
+<p>Widget hierarchy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BaseWidget</span>
+  <span class="n">Non</span><span class="o">-</span><span class="n">focusable</span>
+    <span class="n">WLabel</span>
+    <span class="n">WFrame</span>
+  <span class="n">Focusable</span>
+    <span class="n">Non</span><span class="o">-</span><span class="n">editable</span>
+      <span class="n">WButton</span>
+      <span class="n">WMenuBar</span>
+      <span class="n">WMenuBox</span>
+    <span class="n">Editable</span>
+      <span class="n">Choice</span> <span class="n">widget</span>
+        <span class="n">WCheckbox</span>
+        <span class="n">WRadioButton</span>
+        <span class="n">WListBox</span>
+        <span class="n">WDropDown</span>
+        <span class="n">WCompletionList</span>
+      <span class="n">Non</span><span class="o">-</span><span class="n">choice</span> <span class="n">widget</span>
+        <span class="n">WTextEntry</span>
+        <span class="n">WMultiLine</span>
+        <span class="n">WAutoComplete</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3><a href="index.html">Table of Contents</a></h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html#sbom-and-license-info">SBOM and license info</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Categories of widgets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#editable-vs-non-editable">Editable vs non-editable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choice-widgets">Choice widgets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="README.html"
+                          title="previous chapter">picotui</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="autoapi/index.html"
+                          title="next chapter">API Reference</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="autoapi/index.html" title="API Reference"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="picotui"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">picotui 1.2.2.dev27 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Categories of widgets</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025 Paul Sokolovsky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

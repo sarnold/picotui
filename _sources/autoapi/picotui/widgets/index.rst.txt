@@ -1,0 +1,573 @@
+picotui.widgets
+===============
+
+.. py:module:: picotui.widgets
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   picotui.widgets.ACTION_OK
+   picotui.widgets.ACTION_CANCEL
+   picotui.widgets.ACTION_NEXT
+   picotui.widgets.ACTION_PREV
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   picotui.widgets.EditableWidget
+   picotui.widgets.Dialog
+   picotui.widgets.WLabel
+   picotui.widgets.WProgress
+   picotui.widgets.WFrame
+   picotui.widgets.WButton
+   picotui.widgets.WCheckbox
+   picotui.widgets.WRadioButton
+   picotui.widgets.WListBox
+   picotui.widgets.WPopupList
+   picotui.widgets.WDropDown
+   picotui.widgets.WTextEntry
+   picotui.widgets.WPasswdEntry
+   picotui.widgets.WMultiEntry
+   picotui.widgets.WComboBox
+   picotui.widgets.WCompletionList
+   picotui.widgets.WAutoComplete
+
+
+Module Contents
+---------------
+
+.. py:data:: ACTION_OK
+   :value: 1000
+
+
+.. py:data:: ACTION_CANCEL
+   :value: 1001
+
+
+.. py:data:: ACTION_NEXT
+   :value: 1002
+
+
+.. py:data:: ACTION_PREV
+   :value: 1003
+
+
+.. py:class:: EditableWidget
+
+   Bases: :py:obj:`FocusableWidget`
+
+
+   .. py:method:: get()
+      :abstractmethod:
+
+
+
+.. py:class:: Dialog(x, y, w=0, h=0, title='')
+
+   Bases: :py:obj:`picotui.editorext.Widget`
+
+
+   .. py:attribute:: finish_on_esc
+      :value: True
+
+
+
+   .. py:attribute:: x
+
+
+   .. py:attribute:: y
+
+
+   .. py:attribute:: w
+      :value: 0
+
+
+
+   .. py:attribute:: h
+      :value: 0
+
+
+
+   .. py:attribute:: title
+      :value: ''
+
+
+
+   .. py:attribute:: childs
+      :value: []
+
+
+
+   .. py:attribute:: border_w
+      :value: 2
+
+
+
+   .. py:attribute:: border_h
+      :value: 2
+
+
+
+   .. py:attribute:: focus_w
+      :value: None
+
+
+
+   .. py:attribute:: focus_idx
+      :value: -1
+
+
+
+   .. py:method:: add(x, y, widget)
+
+
+   .. py:method:: autosize(extra_w=0, extra_h=0)
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: find_focusable_by_idx(from_idx, direction)
+
+
+   .. py:method:: find_focusable_by_xy(x, y)
+
+
+   .. py:method:: change_focus(widget)
+
+
+   .. py:method:: move_focus(direction)
+
+
+   .. py:method:: handle_key(key)
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+.. py:class:: WLabel(text, w=0)
+
+   Bases: :py:obj:`picotui.editorext.Widget`
+
+
+   .. py:attribute:: t
+
+
+   .. py:attribute:: h
+      :value: 1
+
+
+
+   .. py:attribute:: w
+      :value: 0
+
+
+
+   .. py:attribute:: validate
+      :value: False
+
+
+
+   .. py:attribute:: valid
+      :value: False
+
+
+
+   .. py:method:: redraw()
+
+
+.. py:class:: WProgress(text, w=10)
+
+   Bases: :py:obj:`picotui.editorext.Widget`
+
+
+   .. py:attribute:: t
+
+
+   .. py:attribute:: h
+      :value: 1
+
+
+
+   .. py:attribute:: w
+      :value: 10
+
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: update(text)
+
+
+.. py:class:: WFrame(w, h, title='')
+
+   Bases: :py:obj:`picotui.editorext.Widget`
+
+
+   .. py:attribute:: w
+
+
+   .. py:attribute:: h
+
+
+   .. py:attribute:: t
+      :value: ''
+
+
+
+   .. py:method:: redraw()
+
+
+.. py:class:: WButton(w, text)
+
+   Bases: :py:obj:`picotui.basewidget.FocusableWidget`
+
+
+   .. py:attribute:: t
+
+
+   .. py:attribute:: h
+      :value: 1
+
+
+
+   .. py:attribute:: w
+
+
+   .. py:attribute:: disabled
+      :value: False
+
+
+
+   .. py:attribute:: focus
+      :value: False
+
+
+
+   .. py:attribute:: finish_dialog
+      :value: False
+
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+   .. py:method:: handle_key(key)
+
+
+   .. py:method:: on_click()
+
+
+.. py:class:: WCheckbox(title, choice=False)
+
+   Bases: :py:obj:`picotui.basewidget.ChoiceWidget`
+
+
+   .. py:attribute:: t
+
+
+   .. py:attribute:: h
+      :value: 1
+
+
+
+   .. py:attribute:: w
+
+
+   .. py:attribute:: focus
+      :value: False
+
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: flip()
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+   .. py:method:: handle_key(key)
+
+
+.. py:class:: WRadioButton(items)
+
+   Bases: :py:obj:`picotui.basewidget.ItemSelWidget`
+
+
+   .. py:attribute:: h
+
+
+   .. py:attribute:: w
+      :value: 4
+
+
+
+   .. py:attribute:: focus
+      :value: False
+
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+   .. py:method:: handle_key(key)
+
+
+.. py:class:: WListBox(w, h, items)
+
+   Bases: :py:obj:`picotui.editorext.EditorExt`, :py:obj:`picotui.basewidget.ChoiceWidget`
+
+
+   .. py:attribute:: width
+
+
+   .. py:attribute:: w
+
+
+   .. py:attribute:: height
+
+
+   .. py:attribute:: h
+
+
+   .. py:attribute:: focus
+      :value: False
+
+
+
+   .. py:method:: set_items(items)
+
+
+   .. py:method:: render_line(l)
+
+
+   .. py:method:: show_line(l, i)
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+   .. py:method:: handle_key(key)
+
+
+   .. py:method:: handle_edit_key(key)
+
+
+   .. py:method:: set_cursor()
+
+
+   .. py:method:: cursor(state)
+
+
+.. py:class:: WPopupList(x, y, w, h, items, sel_item=0)
+
+   Bases: :py:obj:`Dialog`
+
+
+   .. py:class:: OneShotList(w, h, items)
+
+      Bases: :py:obj:`WListBox`
+
+
+      .. py:method:: handle_key(key)
+
+
+      .. py:method:: handle_mouse(x, y)
+
+
+
+   .. py:attribute:: list
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+   .. py:method:: get_choice()
+
+
+   .. py:method:: get_selected_value()
+
+
+.. py:class:: WDropDown(w, items, *, dropdown_h=5)
+
+   Bases: :py:obj:`picotui.basewidget.ChoiceWidget`
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: h
+      :value: 1
+
+
+
+   .. py:attribute:: w
+
+
+   .. py:attribute:: dropdown_h
+      :value: 5
+
+
+
+   .. py:attribute:: focus
+      :value: False
+
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+   .. py:method:: handle_key(key)
+
+
+.. py:class:: WTextEntry(w, text)
+
+   Bases: :py:obj:`picotui.editorext.EditorExt`, :py:obj:`picotui.basewidget.EditableWidget`
+
+
+   .. py:attribute:: t
+
+
+   .. py:attribute:: h
+      :value: 1
+
+
+
+   .. py:attribute:: w
+
+
+   .. py:attribute:: focus
+      :value: False
+
+
+
+   .. py:attribute:: col
+
+
+   .. py:attribute:: just_started
+      :value: True
+
+
+
+   .. py:method:: get()
+
+
+   .. py:method:: set(text)
+
+
+   .. py:method:: handle_cursor_keys(key)
+
+
+   .. py:method:: handle_edit_key(key)
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+   .. py:method:: show_line(l, i)
+
+
+.. py:class:: WPasswdEntry(w, text)
+
+   Bases: :py:obj:`WTextEntry`
+
+
+   .. py:method:: show_line(l, i)
+
+
+.. py:class:: WMultiEntry(w, h, lines)
+
+   Bases: :py:obj:`picotui.editorext.EditorExt`, :py:obj:`picotui.basewidget.EditableWidget`
+
+
+   .. py:attribute:: h
+
+
+   .. py:attribute:: w
+
+
+   .. py:attribute:: focus
+      :value: False
+
+
+
+   .. py:method:: get()
+
+
+   .. py:method:: set(lines)
+
+
+   .. py:method:: show_line(l, i)
+
+
+.. py:class:: WComboBox(w, text, items)
+
+   Bases: :py:obj:`WTextEntry`
+
+
+   .. py:attribute:: popup_class
+
+
+   .. py:attribute:: popup_h
+      :value: 5
+
+
+
+   .. py:attribute:: w
+
+
+   .. py:attribute:: items
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: get_choices(substr)
+
+
+   .. py:method:: show_popup()
+
+
+   .. py:method:: handle_key(key)
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+.. py:class:: WCompletionList(x, y, w, h, items)
+
+   Bases: :py:obj:`WPopupList`
+
+
+   .. py:attribute:: list
+
+
+.. py:class:: WAutoComplete(w, text, items)
+
+   Bases: :py:obj:`WComboBox`
+
+
+   .. py:attribute:: popup_class
+
+
+   .. py:method:: get_choices(substr, only_prefix=False)
+
+

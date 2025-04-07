@@ -1,0 +1,249 @@
+picotui.defs
+============
+
+.. py:module:: picotui.defs
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   picotui.defs.C_BLACK
+   picotui.defs.C_RED
+   picotui.defs.C_GREEN
+   picotui.defs.C_YELLOW
+   picotui.defs.C_BLUE
+   picotui.defs.C_MAGENTA
+   picotui.defs.C_CYAN
+   picotui.defs.C_WHITE
+   picotui.defs.ATTR_INTENSITY
+   picotui.defs.C_GRAY
+   picotui.defs.C_B_RED
+   picotui.defs.C_B_GREEN
+   picotui.defs.C_B_YELLOW
+   picotui.defs.C_B_BLUE
+   picotui.defs.C_B_MAGENTA
+   picotui.defs.C_B_CYAN
+   picotui.defs.C_B_WHITE
+   picotui.defs.KEY_UP
+   picotui.defs.KEY_DOWN
+   picotui.defs.KEY_LEFT
+   picotui.defs.KEY_RIGHT
+   picotui.defs.KEY_HOME
+   picotui.defs.KEY_END
+   picotui.defs.KEY_PGUP
+   picotui.defs.KEY_PGDN
+   picotui.defs.KEY_QUIT
+   picotui.defs.KEY_ENTER
+   picotui.defs.KEY_BACKSPACE
+   picotui.defs.KEY_DELETE
+   picotui.defs.KEY_TAB
+   picotui.defs.KEY_SHIFT_TAB
+   picotui.defs.KEY_ESC
+   picotui.defs.KEY_F1
+   picotui.defs.KEY_F2
+   picotui.defs.KEY_F3
+   picotui.defs.KEY_F4
+   picotui.defs.KEY_F5
+   picotui.defs.KEY_F6
+   picotui.defs.KEY_F7
+   picotui.defs.KEY_F8
+   picotui.defs.KEY_F9
+   picotui.defs.KEY_F10
+   picotui.defs.KEYMAP
+   picotui.defs.DOWN_ARROW
+   picotui.defs.DOWN_TRIANGLE
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   picotui.defs.C_PAIR
+
+
+Module Contents
+---------------
+
+.. py:data:: C_BLACK
+   :value: 0
+
+
+.. py:data:: C_RED
+   :value: 1
+
+
+.. py:data:: C_GREEN
+   :value: 2
+
+
+.. py:data:: C_YELLOW
+   :value: 3
+
+
+.. py:data:: C_BLUE
+   :value: 4
+
+
+.. py:data:: C_MAGENTA
+   :value: 5
+
+
+.. py:data:: C_CYAN
+   :value: 6
+
+
+.. py:data:: C_WHITE
+   :value: 7
+
+
+.. py:data:: ATTR_INTENSITY
+   :value: 8
+
+
+.. py:data:: C_GRAY
+   :value: 8
+
+
+.. py:data:: C_B_RED
+   :value: 9
+
+
+.. py:data:: C_B_GREEN
+   :value: 10
+
+
+.. py:data:: C_B_YELLOW
+   :value: 11
+
+
+.. py:data:: C_B_BLUE
+   :value: 12
+
+
+.. py:data:: C_B_MAGENTA
+   :value: 13
+
+
+.. py:data:: C_B_CYAN
+   :value: 14
+
+
+.. py:data:: C_B_WHITE
+   :value: 15
+
+
+.. py:function:: C_PAIR(fg, bg)
+
+.. py:data:: KEY_UP
+   :value: 1
+
+
+.. py:data:: KEY_DOWN
+   :value: 2
+
+
+.. py:data:: KEY_LEFT
+   :value: 3
+
+
+.. py:data:: KEY_RIGHT
+   :value: 4
+
+
+.. py:data:: KEY_HOME
+   :value: 5
+
+
+.. py:data:: KEY_END
+   :value: 6
+
+
+.. py:data:: KEY_PGUP
+   :value: 7
+
+
+.. py:data:: KEY_PGDN
+   :value: 8
+
+
+.. py:data:: KEY_QUIT
+   :value: 9
+
+
+.. py:data:: KEY_ENTER
+   :value: 10
+
+
+.. py:data:: KEY_BACKSPACE
+   :value: 11
+
+
+.. py:data:: KEY_DELETE
+   :value: 12
+
+
+.. py:data:: KEY_TAB
+   :value: b'\t'
+
+
+.. py:data:: KEY_SHIFT_TAB
+   :value: b'\x1b[Z'
+
+
+.. py:data:: KEY_ESC
+   :value: 20
+
+
+.. py:data:: KEY_F1
+   :value: 30
+
+
+.. py:data:: KEY_F2
+   :value: 31
+
+
+.. py:data:: KEY_F3
+   :value: 32
+
+
+.. py:data:: KEY_F4
+   :value: 33
+
+
+.. py:data:: KEY_F5
+   :value: b'\x1b[15~'
+
+
+.. py:data:: KEY_F6
+   :value: b'\x1b[17~'
+
+
+.. py:data:: KEY_F7
+   :value: b'\x1b[18~'
+
+
+.. py:data:: KEY_F8
+   :value: b'\x1b[19~'
+
+
+.. py:data:: KEY_F9
+   :value: b'\x1b[20~'
+
+
+.. py:data:: KEY_F10
+   :value: b'\x1b[21~'
+
+
+.. py:data:: KEYMAP
+
+.. py:data:: DOWN_ARROW
+   :value: b'\xe2\x86\x93'
+
+
+.. py:data:: DOWN_TRIANGLE
+   :value: b'\xe2\x96\xbc'
+
+

@@ -1,0 +1,108 @@
+picotui.editorext
+=================
+
+.. py:module:: picotui.editorext
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   picotui.editorext.content
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   picotui.editorext.LineEditor
+   picotui.editorext.Viewer
+   picotui.editorext.LineColorViewer
+   picotui.editorext.CharColorViewer
+   picotui.editorext.EditorExt
+
+
+Module Contents
+---------------
+
+.. py:class:: LineEditor(x=0, y=0, width=80, height=24)
+
+   Bases: :py:obj:`picotui.editor.Editor`
+
+
+   .. py:method:: handle_cursor_keys(key)
+
+
+   .. py:method:: handle_key(key)
+
+
+   .. py:method:: edit(line)
+
+
+.. py:class:: Viewer(x=0, y=0, width=80, height=24)
+
+   Bases: :py:obj:`picotui.editor.Editor`
+
+
+   .. py:method:: handle_key(key)
+
+
+.. py:class:: LineColorViewer(x=0, y=0, width=80, height=24)
+
+   Bases: :py:obj:`Viewer`
+
+
+   .. py:method:: show_line(l, i)
+
+
+   .. py:method:: set_line_colors(default_color, color_list={})
+
+
+.. py:class:: CharColorViewer(x=0, y=0, width=80, height=24)
+
+   Bases: :py:obj:`Viewer`
+
+
+   .. py:method:: show_line(l, i)
+
+
+   .. py:method:: set_def_color(default_color)
+
+
+.. py:class:: EditorExt(left=0, top=0, width=80, height=24)
+
+   Bases: :py:obj:`picotui.editor.Editor`
+
+
+   .. py:attribute:: screen_width
+      :value: 80
+
+
+
+   .. py:attribute:: status_y
+      :value: 25
+
+
+
+   .. py:method:: get_cur_line()
+
+
+   .. py:method:: line_visible(no)
+
+
+   .. py:method:: goto_line(no, col=None, center=True)
+
+
+   .. py:method:: show_status(msg)
+
+
+   .. py:method:: show_cursor_status()
+
+
+   .. py:method:: dialog_edit_line(left=None, top=8, width=40, height=3, line='', title='')
+
+
+.. py:data:: content
+

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>picotui.basewidget &#8212; picotui 1.2.2.dev27 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    
+    <script src="../../../_static/documentation_options.js?v=d4331690"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="picotui.context" href="../context/index.html" />
+    <link rel="prev" title="picotui" href="../index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../context/index.html" title="picotui.context"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="picotui"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">picotui 1.2.2.dev27 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">picotui</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">picotui.basewidget</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-picotui.basewidget">
+<span id="picotui-basewidget"></span><h1>picotui.basewidget<a class="headerlink" href="#module-picotui.basewidget" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picotui.basewidget.ACTION_OK" title="picotui.basewidget.ACTION_OK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACTION_OK</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#picotui.basewidget.ACTION_CANCEL" title="picotui.basewidget.ACTION_CANCEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACTION_CANCEL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picotui.basewidget.ACTION_NEXT" title="picotui.basewidget.ACTION_NEXT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACTION_NEXT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#picotui.basewidget.ACTION_PREV" title="picotui.basewidget.ACTION_PREV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACTION_PREV</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picotui.basewidget.Widget" title="picotui.basewidget.Widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Widget</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#picotui.basewidget.FocusableWidget" title="picotui.basewidget.FocusableWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FocusableWidget</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picotui.basewidget.EditableWidget" title="picotui.basewidget.EditableWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EditableWidget</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#picotui.basewidget.ChoiceWidget" title="picotui.basewidget.ChoiceWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChoiceWidget</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picotui.basewidget.ItemSelWidget" title="picotui.basewidget.ItemSelWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ItemSelWidget</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="picotui.basewidget.ACTION_OK">
+<span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">ACTION_OK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000</span></em><a class="headerlink" href="#picotui.basewidget.ACTION_OK" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="picotui.basewidget.ACTION_CANCEL">
+<span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">ACTION_CANCEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1001</span></em><a class="headerlink" href="#picotui.basewidget.ACTION_CANCEL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="picotui.basewidget.ACTION_NEXT">
+<span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">ACTION_NEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1002</span></em><a class="headerlink" href="#picotui.basewidget.ACTION_NEXT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="picotui.basewidget.ACTION_PREV">
+<span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">ACTION_PREV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1003</span></em><a class="headerlink" href="#picotui.basewidget.ACTION_PREV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">Widget</span></span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../screen/index.html#picotui.screen.Screen" title="picotui.screen.Screen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">picotui.screen.Screen</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.kbuf">
+<span class="sig-name descname"><span class="pre">kbuf</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></em><a class="headerlink" href="#picotui.basewidget.Widget.kbuf" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.signals">
+<span class="sig-name descname"><span class="pre">signals</span></span><a class="headerlink" href="#picotui.basewidget.Widget.signals" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.set_xy">
+<span class="sig-name descname"><span class="pre">set_xy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.set_xy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.set_xy" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.inside">
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.inside"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.inside" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.signal">
+<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.signal" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.on" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.longest">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">longest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.longest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.longest" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.set_cursor">
+<span class="sig-name descname"><span class="pre">set_cursor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.set_cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.set_cursor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.get_input">
+<span class="sig-name descname"><span class="pre">get_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.get_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.get_input" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.handle_input">
+<span class="sig-name descname"><span class="pre">handle_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.handle_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.handle_input" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.Widget.loop">
+<span class="sig-name descname"><span class="pre">loop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#Widget.loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.Widget.loop" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.basewidget.FocusableWidget">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">FocusableWidget</span></span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#FocusableWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.FocusableWidget" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.basewidget.Widget" title="picotui.basewidget.Widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Widget</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.basewidget.FocusableWidget.finish_dialog">
+<span class="sig-name descname"><span class="pre">finish_dialog</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#picotui.basewidget.FocusableWidget.finish_dialog" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.basewidget.EditableWidget">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">EditableWidget</span></span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#EditableWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.EditableWidget" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.basewidget.FocusableWidget" title="picotui.basewidget.FocusableWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FocusableWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.EditableWidget.get">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#EditableWidget.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.EditableWidget.get" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.basewidget.ChoiceWidget">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">ChoiceWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">choice</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#ChoiceWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.ChoiceWidget" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.basewidget.EditableWidget" title="picotui.basewidget.EditableWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EditableWidget</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.basewidget.ChoiceWidget.choice">
+<span class="sig-name descname"><span class="pre">choice</span></span><a class="headerlink" href="#picotui.basewidget.ChoiceWidget.choice" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.ChoiceWidget.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#ChoiceWidget.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.ChoiceWidget.get" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.basewidget.ItemSelWidget">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.basewidget.</span></span><span class="sig-name descname"><span class="pre">ItemSelWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#ItemSelWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.ItemSelWidget" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.basewidget.ChoiceWidget" title="picotui.basewidget.ChoiceWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChoiceWidget</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.basewidget.ItemSelWidget.items">
+<span class="sig-name descname"><span class="pre">items</span></span><a class="headerlink" href="#picotui.basewidget.ItemSelWidget.items" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.basewidget.ItemSelWidget.move_sel">
+<span class="sig-name descname"><span class="pre">move_sel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/picotui/basewidget.html#ItemSelWidget.move_sel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.basewidget.ItemSelWidget.move_sel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3><a href="../../../index.html">Table of Contents</a></h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html#sbom-and-license-info">SBOM and license info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../widgets.html">Categories of widgets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">picotui</a></li>
+</ul>
+</li>
+</ul>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../index.html"
+                          title="previous chapter">picotui</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../context/index.html"
+                          title="next chapter">picotui.context</a></p>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../context/index.html" title="picotui.context"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="picotui"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">picotui 1.2.2.dev27 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" >picotui</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">picotui.basewidget</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025 Paul Sokolovsky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

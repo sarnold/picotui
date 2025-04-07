@@ -1,0 +1,132 @@
+picotui.basewidget
+==================
+
+.. py:module:: picotui.basewidget
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   picotui.basewidget.ACTION_OK
+   picotui.basewidget.ACTION_CANCEL
+   picotui.basewidget.ACTION_NEXT
+   picotui.basewidget.ACTION_PREV
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   picotui.basewidget.Widget
+   picotui.basewidget.FocusableWidget
+   picotui.basewidget.EditableWidget
+   picotui.basewidget.ChoiceWidget
+   picotui.basewidget.ItemSelWidget
+
+
+Module Contents
+---------------
+
+.. py:data:: ACTION_OK
+   :value: 1000
+
+
+.. py:data:: ACTION_CANCEL
+   :value: 1001
+
+
+.. py:data:: ACTION_NEXT
+   :value: 1002
+
+
+.. py:data:: ACTION_PREV
+   :value: 1003
+
+
+.. py:class:: Widget
+
+   Bases: :py:obj:`picotui.screen.Screen`
+
+
+   .. py:attribute:: kbuf
+      :value: b''
+
+
+
+   .. py:attribute:: signals
+
+
+   .. py:method:: set_xy(x, y)
+
+
+   .. py:method:: inside(x, y)
+
+
+   .. py:method:: signal(sig)
+
+
+   .. py:method:: on(sig, handler)
+
+
+   .. py:method:: longest(items)
+      :staticmethod:
+
+
+
+   .. py:method:: set_cursor()
+
+
+   .. py:method:: get_input()
+
+
+   .. py:method:: handle_input(inp)
+
+
+   .. py:method:: loop()
+
+
+.. py:class:: FocusableWidget
+
+   Bases: :py:obj:`Widget`
+
+
+   .. py:attribute:: finish_dialog
+      :value: False
+
+
+
+.. py:class:: EditableWidget
+
+   Bases: :py:obj:`FocusableWidget`
+
+
+   .. py:method:: get()
+      :abstractmethod:
+
+
+
+.. py:class:: ChoiceWidget(choice)
+
+   Bases: :py:obj:`EditableWidget`
+
+
+   .. py:attribute:: choice
+
+
+   .. py:method:: get()
+
+
+.. py:class:: ItemSelWidget(items)
+
+   Bases: :py:obj:`ChoiceWidget`
+
+
+   .. py:attribute:: items
+
+
+   .. py:method:: move_sel(direction)
+
+

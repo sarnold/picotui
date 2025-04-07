@@ -1,0 +1,108 @@
+picotui.screen
+==============
+
+.. py:module:: picotui.screen
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   picotui.screen.Screen
+
+
+Module Contents
+---------------
+
+.. py:class:: Screen
+
+   .. py:method:: wr(s)
+      :staticmethod:
+
+
+
+   .. py:method:: wr_fixedw(s, width)
+      :staticmethod:
+
+
+
+   .. py:method:: cls()
+      :staticmethod:
+
+
+
+   .. py:method:: goto(x, y)
+      :staticmethod:
+
+
+
+   .. py:method:: clear_to_eol()
+      :staticmethod:
+
+
+
+   .. py:method:: clear_num_pos(num)
+      :staticmethod:
+
+
+
+   .. py:method:: attr_color(fg, bg=-1)
+      :staticmethod:
+
+
+
+   .. py:method:: attr_reset()
+      :staticmethod:
+
+
+
+   .. py:method:: cursor(onoff)
+      :staticmethod:
+
+
+
+   .. py:method:: draw_box(left, top, width, height)
+
+
+   .. py:method:: clear_box(left, top, width, height)
+
+
+   .. py:method:: dialog_box(left, top, width, height, title='')
+
+
+   .. py:method:: init_tty()
+      :classmethod:
+
+
+
+   .. py:method:: deinit_tty()
+      :classmethod:
+
+
+
+   .. py:method:: enable_mouse()
+      :classmethod:
+
+
+
+   .. py:method:: disable_mouse()
+      :classmethod:
+
+
+
+   .. py:method:: screen_size()
+      :classmethod:
+
+
+
+   .. py:method:: set_screen_redraw(handler)
+      :classmethod:
+
+
+
+   .. py:method:: set_screen_resize(handler)
+      :classmethod:
+
+
+

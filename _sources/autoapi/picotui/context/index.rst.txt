@@ -1,0 +1,35 @@
+picotui.context
+===============
+
+.. py:module:: picotui.context
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   picotui.context.Context
+
+
+Module Contents
+---------------
+
+.. py:class:: Context(cls=True, mouse=True)
+
+   .. py:attribute:: cls
+      :value: True
+
+
+
+   .. py:attribute:: mouse
+      :value: True
+
+
+
+   .. py:method:: __enter__()
+
+
+   .. py:method:: __exit__(exc_type, exc_val, exc_tb)
+
+

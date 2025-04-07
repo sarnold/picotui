@@ -1,0 +1,85 @@
+picotui.menu
+============
+
+.. py:module:: picotui.menu
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   picotui.menu.WMenuBar
+   picotui.menu.WMenuBox
+
+
+Module Contents
+---------------
+
+.. py:class:: WMenuBar(menu_struct)
+
+   Bases: :py:obj:`picotui.basewidget.ItemSelWidget`
+
+
+   .. py:attribute:: h
+      :value: 1
+
+
+
+   .. py:attribute:: w
+      :value: 80
+
+
+
+   .. py:attribute:: pulled_down
+      :value: False
+
+
+
+   .. py:attribute:: focus
+      :value: False
+
+
+
+   .. py:attribute:: permanent
+      :value: False
+
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: close()
+
+
+   .. py:method:: get_item_x(item_no)
+
+
+   .. py:method:: handle_key(key)
+
+
+   .. py:method:: handle_mouse(x, y)
+
+
+.. py:class:: WMenuBox(items)
+
+   Bases: :py:obj:`picotui.basewidget.ItemSelWidget`
+
+
+   .. py:attribute:: h
+
+
+   .. py:attribute:: w
+      :value: 2
+
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: handle_key(key)
+
+
+   .. py:method:: handle_mouse(x, y)
+
+

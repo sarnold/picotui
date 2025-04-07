@@ -1,0 +1,62 @@
+picotui.dialogs
+===============
+
+.. py:module:: picotui.dialogs
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   picotui.dialogs.DTextEntry
+   picotui.dialogs.DMultiEntry
+   picotui.dialogs.DConfirmation
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   picotui.dialogs.add_ok_cancel_buttons
+   picotui.dialogs.add_next_prev_buttons
+
+
+Module Contents
+---------------
+
+.. py:function:: add_ok_cancel_buttons(d)
+
+.. py:function:: add_next_prev_buttons(d)
+
+.. py:class:: DTextEntry(entry_w, text, title='')
+
+   Bases: :py:obj:`picotui.widgets.Dialog`
+
+
+   .. py:attribute:: entry
+
+
+   .. py:method:: result()
+
+
+.. py:class:: DMultiEntry(entry_w, entry_h, lines, title='')
+
+   Bases: :py:obj:`picotui.widgets.Dialog`
+
+
+   .. py:attribute:: widget
+
+
+   .. py:method:: result()
+
+
+.. py:class:: DConfirmation(x, y, entry_w, entry_h, lines, title='')
+
+   Bases: :py:obj:`picotui.widgets.Dialog`
+
+
+   .. py:method:: result()
+
+

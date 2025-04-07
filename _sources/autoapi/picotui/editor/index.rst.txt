@@ -1,0 +1,113 @@
+picotui.editor
+==============
+
+.. py:module:: picotui.editor
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   picotui.editor.content
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   picotui.editor.Editor
+
+
+Module Contents
+---------------
+
+.. py:class:: Editor(x=0, y=0, width=80, height=24)
+
+   Bases: :py:obj:`picotui.basewidget.Widget`
+
+
+   .. py:attribute:: top_line
+      :value: 0
+
+
+
+   .. py:attribute:: cur_line
+      :value: 0
+
+
+
+   .. py:attribute:: row
+      :value: 0
+
+
+
+   .. py:attribute:: col
+      :value: 0
+
+
+
+   .. py:attribute:: x
+      :value: 0
+
+
+
+   .. py:attribute:: y
+      :value: 0
+
+
+
+   .. py:attribute:: height
+      :value: 24
+
+
+
+   .. py:attribute:: width
+      :value: 80
+
+
+
+   .. py:attribute:: margin
+      :value: 0
+
+
+
+   .. py:method:: set_cursor()
+
+
+   .. py:method:: adjust_cursor_eol()
+
+
+   .. py:method:: set_lines(lines)
+
+
+   .. py:method:: redraw()
+
+
+   .. py:method:: update_line()
+
+
+   .. py:method:: show_line(l, i)
+
+
+   .. py:method:: next_line()
+
+
+   .. py:method:: handle_cursor_keys(key)
+
+
+   .. py:method:: handle_mouse(col, row)
+
+
+   .. py:method:: handle_key(key)
+
+
+   .. py:method:: handle_edit_key(key)
+
+
+   .. py:method:: deinit_tty()
+
+
+.. py:data:: content
+
