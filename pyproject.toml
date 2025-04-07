@@ -92,13 +92,14 @@ markers = "subscript"
 
 [tool.coverage.run]
 branch = true
-source = ["picotui"]
+source_pkgs = ["picotui"]
 omit = [
     "examples/*",
     "tests/*",
     "setup.py",
     ".tox",
 ]
+
 [tool.coverage.paths]
 source = ["picotui"]
 
