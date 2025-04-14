@@ -130,7 +130,6 @@ exclude = '''
   | build
   | docs
   | dist
-  | edm1-captures
   | tests
 )/
 '''
