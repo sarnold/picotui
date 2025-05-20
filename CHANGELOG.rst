@@ -412,7 +412,7 @@ v0.9 (2017-02-17)
   screen that it can reposition and enable cursor if needed.
 - Screen: attr_color: Fix rendering of non-bright colors after bright.
   [Paul Sokolovsky]
-- Screen: Make color names terse. Now prefixes are C_ and C_B_. [Paul
+- Screen: Make color names terse. Now prefixes are C\_ and C_B\_. [Paul
   Sokolovsky]
 
   Old names are long and unwieldy. Color name alone should be enough to make

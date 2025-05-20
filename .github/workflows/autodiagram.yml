@@ -1,0 +1,20 @@
+name: Generate Class Diagram
+
+on:
+  pull_request:
+
+jobs:
+  createClassDiagram:
+    name: Create Diagram
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: miketrebilcock/python-code-visualiser@v2
+      with:
+        gh-token: ${{ secrets.GITHUB_TOKEN }}
+

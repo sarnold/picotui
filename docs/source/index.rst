@@ -14,6 +14,7 @@ picotui docs
 
     README
     widgets
+    api/modules
     CHANGELOG
 
 
