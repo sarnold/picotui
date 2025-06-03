@@ -15,8 +15,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 # The full version, including alpha/beta/rc tags with setuptols-scm
 # workaround for extra-long dirty version string
 release = version('picotui').split("+")[0]
-# The short X.Y version.
-version = '.'.join(release.split('.')[:2])
+# screw the short X.Y version.
+version = release
 
 project = 'picotui'
 author = 'Paul Sokolovsky'
@@ -32,17 +32,27 @@ copyright = str(datetime.now().year) + f' {author}'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'autoapi.extension',
+    'sphinx_git',
+    'sphinxcontrib.apidoc',
+    'sphinx.ext.autodoc',
     'sphinx.ext.autodoc.typehints',
     'sphinx.ext.doctest',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
-    'sphinx_git',
-    'recommonmark',
+    'myst_parser',
 ]
 
-autoapi_dirs = ['../../picotui']
+myst_suppress_warnings = ["myst.header"]
+myst_enable_extensions = ["attrs_inline", "deflist", "fieldlist", "substitution",]
+
+# sphinxcontrib.apidoc
+apidoc_module_dir = '../../picotui'
+apidoc_output_dir = 'api'
+apidoc_excluded_paths = ['examples', 'tests']
+apidoc_include_private = True
+apidoc_separate_modules = True
+
 autodoc_typehints = 'description'
 
 # Add any paths that contain templates here, relative to this directory.
@@ -50,7 +60,10 @@ templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 #
-source_suffix = {'.rst': 'restructuredtext'}
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # The master toctree document.
 master_doc = 'index'
@@ -85,7 +98,8 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'classic'
+#html_theme = 'classic'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the

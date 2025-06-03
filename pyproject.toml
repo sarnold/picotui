@@ -55,9 +55,9 @@ cov = [
 doc = [
     "sphinx",
     "sphinx_git",
-    "sphinx-autoapi",
-    "sphinx_rtd_theme",
-    "recommonmark",
+    "sphinxcontrib.apidoc",
+    "myst-parser",
+    "sphinx_rtd_theme<3.0.0",
 ]
 test = [
     "pytest",
@@ -130,7 +130,6 @@ exclude = '''
   | build
   | docs
   | dist
-  | edm1-captures
   | tests
 )/
 '''

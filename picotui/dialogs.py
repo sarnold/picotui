@@ -1,7 +1,7 @@
 from .widgets import *
 
 
-def add_ok_cancel_buttons(d):
+def add_ok_cancel_buttons(d, ok_txt="OK", cl_txt="Cancel"):
     if d.h == 0:
         d.autosize(0, 1)
     if d.w < 20:
@@ -9,16 +9,16 @@ def add_ok_cancel_buttons(d):
     hw = d.w // 2
     off1 = (hw + 1) // 2 - 4
     off2 = (d.w - hw) + hw // 2 - 4
-    b = WButton(8, "OK")
+    b = WButton(8, ok_txt)
     d.add(off1, d.h - 1, b)
     b.finish_dialog = ACTION_OK
 
-    b = WButton(8, "Cancel")
+    b = WButton(8, cl_txt)
     d.add(off2, d.h - 1, b)
     b.finish_dialog = ACTION_CANCEL
 
 
-def add_next_prev_buttons(d):
+def add_next_prev_buttons(d, nxt_txt="Next", pre_txt="Back"):
     if d.h == 0:
         d.autosize(0, 1)
     if d.w < 20:
@@ -26,11 +26,11 @@ def add_next_prev_buttons(d):
     hw = d.w // 2
     off1 = (hw + 1) // 2 - 4
     off2 = (d.w - hw) + hw // 2 - 4
-    b = WButton(8, "Next")
+    b = WButton(8, nxt_txt)
     d.add(off1, d.h - 1, b)
     b.finish_dialog = ACTION_NEXT
 
-    b = WButton(8, "Back")
+    b = WButton(8, pre_txt)
     d.add(off2, d.h - 1, b)
     b.finish_dialog = ACTION_PREV
 
@@ -66,7 +66,7 @@ class DMultiEntry(Dialog):
 
 class DConfirmation(Dialog):
 
-    def __init__(self, x, y, entry_w, entry_h, lines, title=""):
+    def __init__(self, x, y, entry_w, entry_h, lines, title="", ok_txt="OK", cl_txt="Cancel"):
         super().__init__(x, y, entry_w, entry_h, title=title)
         if not isinstance(lines, list):
             lines = [lines]
@@ -75,7 +75,7 @@ class DConfirmation(Dialog):
             self.add(2, i, WLabel(l))
             i += 1
         self.autosize(extra_w=1, extra_h=1)
-        add_ok_cancel_buttons(self)
+        add_ok_cancel_buttons(self, ok_txt=ok_txt, cl_txt=cl_txt)
 
     def result(self):
         return self.loop()

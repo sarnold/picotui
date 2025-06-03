@@ -199,11 +199,13 @@ class WFrame(Widget):
 
 class WButton(FocusableWidget):
 
-    def __init__(self, w, text):
+    def __init__(self, w, text, color=C_GREEN):
         Widget.__init__(self)
         self.t = text
         self.h = 1
         self.w = w or len(text) + 2
+        self.name = text.lower()
+        self.bg_color = color
         self.disabled = False
         self.focus = False
         self.finish_dialog = False
@@ -214,9 +216,9 @@ class WButton(FocusableWidget):
             self.attr_color(C_WHITE, C_GRAY)
         else:
             if self.focus:
-                self.attr_color(C_B_WHITE, C_GREEN)
+                self.attr_color(C_B_WHITE, self.bg_color)
             else:
-                self.attr_color(C_BLACK, C_GREEN)
+                self.attr_color(C_BLACK, self.bg_color)
         self.wr(self.t.center(self.w))
         self.attr_reset()
 
