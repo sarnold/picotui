@@ -1,0 +1,7 @@
+picotui.menu module
+===================
+
+.. automodule:: picotui.menu
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+picotui.widgets module
+======================
+
+.. automodule:: picotui.widgets
+   :members:
+   :undoc-members:
+   :show-inheritance:
