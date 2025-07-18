@@ -1,86 +1,12 @@
 [build-system]
 requires = [
-    "setuptools>= 61.0.0",
-    "setuptools_scm[toml]>=7.0",
+    "setuptools>=45",
+    "setuptools_scm[toml]>=6.0",
 ]
 build-backend = "setuptools.build_meta"
 
-[project]
-name = "picotui"
-description = "A simple text user interface (TUI) library."
-dynamic = ["version"]
-readme = "README.rst"
-
-# legacy bits and new both fail in different versions
-# need workaround until PEP639 has more backend support
-# for now, use deprecated format for conda compatibility
-#license = "MIT"
-license = {"text" = "MIT"}
-
-authors = [
-    {name = "Paul Sokolovsky"},
-    {email = "pfalcon@users.sourceforge.net"},
-]
-maintainers = [
-    {name = "Stephen L Arnold", email = "stephen.arnold42@gmail.com"},
-]
-
-classifiers = [
-    "Development Status :: 5 - Production/Stable",
-    "Environment :: Console",
-    "Intended Audience :: Developers",
-    "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3",
-    "Topic :: Software Development",
-    "Topic :: Software Development :: Libraries",
-    "Topic :: Software Development :: Embedded Systems",
-]
-
-# dependencies = []
-
-requires-python = ">=3.6"
-
-[project.optional-dependencies]
-dev = [
-    "flake8",
-    "isort",
-    "mypy==0.990",
-    "black >= 22.3.0",
-    "pylint >= 3.1.0",
-]
-cov = [
-    "covdefaults",
-    "coverage[toml]",
-]
-doc = [
-    "sphinx",
-    "sphinx_git",
-    "sphinxcontrib.apidoc",
-    "myst-parser",
-    "sphinx_rtd_theme<3.0.0",
-]
-test = [
-    "pytest",
-    "pytest-cov",
-]
-
-[project.urls]
-Homepage = "https://github.com/pfalcon/picotui"
-Repository = "https://github.com/pfalcon/picotui.git"
-Issues = "https://github.com/pfalcon/picotui/issues"
-Changelog = "https://github.com/pfalcon/picotui/blob/master/CHANGELOG.rst"
-
-[tool.setuptools.packages.find]
-namespaces = true
-include = [
-    "picotui",
-]
-exclude = [
-    "docs/",
-    "tests/",
-]
-
 [tool.setuptools_scm]
+version_scheme = "post-release"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -89,6 +15,10 @@ log_cli =  true
 doctest_optionflags = ["ELLIPSIS", "NORMALIZE_WHITESPACE",]
 addopts = "--strict-markers"
 markers = "subscript"
+filterwarnings = [
+    "ignore:currentThread:DeprecationWarning",
+    "ignore:co_lnotab:DeprecationWarning",
+]
 
 [tool.coverage.run]
 branch = true
@@ -97,7 +27,7 @@ omit = [
     "examples/*",
     "tests/*",
     "setup.py",
-    ".tox",
+    ".tox/*",
 ]
 
 [tool.coverage.paths]
