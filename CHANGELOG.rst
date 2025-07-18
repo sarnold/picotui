@@ -2,8 +2,38 @@ Changelog
 =========
 
 
-v1.2.2 (2025-04-07)
+v1.2.3 (2025-07-18)
 -------------------
+
+Changes
+~~~~~~~
+- Move metadata to setup.cfg, cleanup coverage bits. [Stephen L Arnold]
+- Add docs build to needs for release job. [Stephen L Arnold]
+
+
+v1.2.2 (2025-06-03)
+-------------------
+
+Changes
+~~~~~~~
+- Cleanup docs config and sphinx deps, add diagram workflow. [Stephen L
+  Arnold]
+- Allow passing button text in DConf and bg color in WButton. [Stephen L
+  Arnold]
+
+  * give buttons a name attribute equal to their lowercase text
+  * add example_conf_dialog to examples, cleanup project/workflow files
+
+Fixes
+~~~~~
+- Use correct coverage percent label on badge. [Stephen L Arnold]
+
+  * add missing docs build to release workflow
+  * add .gitchangelog.rc and link changelog to docs build
+
+
+v1.2.1.1 (2025-06-03)
+---------------------
 
 New
 ~~~
@@ -55,10 +85,6 @@ Changes
 
 Fixes
 ~~~~~
-- Use correct coverage percent label on badge. [Stephen L Arnold]
-
-  * add missing docs build to release workflow
-  * add .gitchangelog.rc and link changelog to docs build
 - Use correct project path in bandit workflow. [Stephen L Arnold]
 
   * cleanup coverage bits, stop tests from leaking
@@ -412,7 +438,7 @@ v0.9 (2017-02-17)
   screen that it can reposition and enable cursor if needed.
 - Screen: attr_color: Fix rendering of non-bright colors after bright.
   [Paul Sokolovsky]
-- Screen: Make color names terse. Now prefixes are C\_ and C_B\_. [Paul
+- Screen: Make color names terse. Now prefixes are C_ and C_B_. [Paul
   Sokolovsky]
 
   Old names are long and unwieldy. Color name alone should be enough to make
