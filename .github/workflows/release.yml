@@ -23,7 +23,7 @@ jobs:
 
   create_release:
     name: Create Release
-    needs: [build_wheels]
+    needs: [build_wheels,build_docs]
     runs-on: ubuntu-22.04
 
     steps:
