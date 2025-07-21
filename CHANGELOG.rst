@@ -2,6 +2,14 @@ Changelog
 =========
 
 
+v1.2.3.1 (2025-07-21)
+---------------------
+
+Fixes
+~~~~~
+- Restore missing metadata bits, update changelog. [Stephen L Arnold]
+
+
 v1.2.3 (2025-07-18)
 -------------------
 
