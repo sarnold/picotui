@@ -2,7 +2,16 @@ Changelog
 =========
 
 
-v1.2.3.1 (2025-07-21)
+v1.2.3.2 (2025-08-19)
+---------------------
+
+Fixes
+~~~~~
+- Remove deprecated version attribute from package metadata. [Stephen L
+  Arnold]
+
+
+v1.2.3.1 (2025-07-22)
 ---------------------
 
 Fixes
@@ -796,5 +805,3 @@ v0.5 (2016-06-27)
   handling.
 - Add basic implementation of terminal editor widget. [Paul Sokolovsky]
 - Empty root commit. [Paul Sokolovsky]
-
-
