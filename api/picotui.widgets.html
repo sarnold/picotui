@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>picotui.widgets module &mdash; picotui 1.2.3.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=0ad615d5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Changelog" href="../CHANGELOG.html" />
+    <link rel="prev" title="picotui.screen module" href="picotui.screen.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            picotui
+          </a>
+              <div class="version">
+                1.2.3.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#sbom-and-license-info">SBOM and license info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../widgets.html">Categories of widgets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">picotui</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="picotui.html">picotui package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="picotui.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="picotui.basewidget.html">picotui.basewidget module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.context.html">picotui.context module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.defs.html">picotui.defs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.dialogs.html">picotui.dialogs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.editor.html">picotui.editor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.editorext.html">picotui.editorext module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.menu.html">picotui.menu module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.screen.html">picotui.screen module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">picotui.widgets module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.html#module-picotui">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">picotui</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">picotui</a></li>
+          <li class="breadcrumb-item"><a href="picotui.html">picotui package</a></li>
+      <li class="breadcrumb-item active">picotui.widgets module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/picotui.widgets.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-picotui.widgets">
+<span id="picotui-widgets-module"></span><h1>picotui.widgets module<a class="headerlink" href="#module-picotui.widgets" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">Dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget" title="picotui.basewidget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">Widget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.add" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.autosize">
+<span class="sig-name descname"><span class="pre">autosize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra_w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.autosize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.autosize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.change_focus">
+<span class="sig-name descname"><span class="pre">change_focus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">widget</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.change_focus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.change_focus" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.find_focusable_by_idx">
+<span class="sig-name descname"><span class="pre">find_focusable_by_idx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.find_focusable_by_idx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.find_focusable_by_idx" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.find_focusable_by_xy">
+<span class="sig-name descname"><span class="pre">find_focusable_by_xy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.find_focusable_by_xy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.find_focusable_by_xy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.finish_on_esc">
+<span class="sig-name descname"><span class="pre">finish_on_esc</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#picotui.widgets.Dialog.finish_on_esc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.handle_key">
+<span class="sig-name descname"><span class="pre">handle_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.handle_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.handle_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.move_focus">
+<span class="sig-name descname"><span class="pre">move_focus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.move_focus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.move_focus" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.Dialog.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#Dialog.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.Dialog.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.EditableWidget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">EditableWidget</span></span><a class="reference internal" href="../_modules/picotui/basewidget.html#EditableWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.EditableWidget" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.FocusableWidget" title="picotui.basewidget.FocusableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">FocusableWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.EditableWidget.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/basewidget.html#EditableWidget.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.EditableWidget.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WAutoComplete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WAutoComplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WAutoComplete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WAutoComplete" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.widgets.WComboBox" title="picotui.widgets.WComboBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">WComboBox</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WAutoComplete.get_choices">
+<span class="sig-name descname"><span class="pre">get_choices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WAutoComplete.get_choices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WAutoComplete.get_choices" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.widgets.WAutoComplete.popup_class">
+<span class="sig-name descname"><span class="pre">popup_class</span></span><a class="headerlink" href="#picotui.widgets.WAutoComplete.popup_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#picotui.widgets.WCompletionList" title="picotui.widgets.WCompletionList"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCompletionList</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WButton">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WButton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WButton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WButton" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.FocusableWidget" title="picotui.basewidget.FocusableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">FocusableWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WButton.handle_key">
+<span class="sig-name descname"><span class="pre">handle_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WButton.handle_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WButton.handle_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WButton.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WButton.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WButton.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WButton.on_click">
+<span class="sig-name descname"><span class="pre">on_click</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WButton.on_click"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WButton.on_click" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WButton.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WButton.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WButton.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WCheckbox">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WCheckbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WCheckbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WCheckbox" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.ChoiceWidget" title="picotui.basewidget.ChoiceWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChoiceWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WCheckbox.flip">
+<span class="sig-name descname"><span class="pre">flip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WCheckbox.flip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WCheckbox.flip" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WCheckbox.handle_key">
+<span class="sig-name descname"><span class="pre">handle_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WCheckbox.handle_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WCheckbox.handle_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WCheckbox.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WCheckbox.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WCheckbox.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WCheckbox.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WCheckbox.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WCheckbox.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WComboBox">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WComboBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WComboBox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WComboBox" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.widgets.WTextEntry" title="picotui.widgets.WTextEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">WTextEntry</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WComboBox.get_choices">
+<span class="sig-name descname"><span class="pre">get_choices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WComboBox.get_choices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WComboBox.get_choices" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WComboBox.handle_key">
+<span class="sig-name descname"><span class="pre">handle_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WComboBox.handle_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WComboBox.handle_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WComboBox.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WComboBox.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WComboBox.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.widgets.WComboBox.popup_class">
+<span class="sig-name descname"><span class="pre">popup_class</span></span><a class="headerlink" href="#picotui.widgets.WComboBox.popup_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#picotui.widgets.WPopupList" title="picotui.widgets.WPopupList"><code class="xref py py-class docutils literal notranslate"><span class="pre">WPopupList</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="picotui.widgets.WComboBox.popup_h">
+<span class="sig-name descname"><span class="pre">popup_h</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#picotui.widgets.WComboBox.popup_h" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WComboBox.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WComboBox.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WComboBox.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WComboBox.show_popup">
+<span class="sig-name descname"><span class="pre">show_popup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WComboBox.show_popup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WComboBox.show_popup" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WCompletionList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WCompletionList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WCompletionList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WCompletionList" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.widgets.WPopupList" title="picotui.widgets.WPopupList"><code class="xref py py-class docutils literal notranslate"><span class="pre">WPopupList</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WDropDown">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WDropDown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropdown_h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WDropDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WDropDown" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.ChoiceWidget" title="picotui.basewidget.ChoiceWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChoiceWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WDropDown.handle_key">
+<span class="sig-name descname"><span class="pre">handle_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WDropDown.handle_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WDropDown.handle_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WDropDown.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WDropDown.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WDropDown.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WDropDown.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WDropDown.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WDropDown.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WFrame">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WFrame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WFrame" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget" title="picotui.basewidget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">Widget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WFrame.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WFrame.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WFrame.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WLabel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WLabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WLabel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WLabel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget" title="picotui.basewidget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">Widget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WLabel.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WLabel.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WLabel.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WListBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt" title="picotui.editorext.EditorExt"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditorExt</span></code></a>, <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.ChoiceWidget" title="picotui.basewidget.ChoiceWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChoiceWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox.cursor">
+<span class="sig-name descname"><span class="pre">cursor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox.cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox.cursor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox.handle_edit_key">
+<span class="sig-name descname"><span class="pre">handle_edit_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox.handle_edit_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox.handle_edit_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox.handle_key">
+<span class="sig-name descname"><span class="pre">handle_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox.handle_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox.handle_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox.render_line">
+<span class="sig-name descname"><span class="pre">render_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox.render_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox.render_line" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox.set_cursor">
+<span class="sig-name descname"><span class="pre">set_cursor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox.set_cursor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox.set_cursor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox.set_items">
+<span class="sig-name descname"><span class="pre">set_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox.set_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox.set_items" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WListBox.show_line">
+<span class="sig-name descname"><span class="pre">show_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WListBox.show_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WListBox.show_line" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WMultiEntry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WMultiEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lines</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WMultiEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WMultiEntry" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt" title="picotui.editorext.EditorExt"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditorExt</span></code></a>, <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.EditableWidget" title="picotui.basewidget.EditableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditableWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WMultiEntry.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WMultiEntry.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WMultiEntry.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WMultiEntry.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WMultiEntry.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WMultiEntry.set" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WMultiEntry.show_line">
+<span class="sig-name descname"><span class="pre">show_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WMultiEntry.show_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WMultiEntry.show_line" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WPasswdEntry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WPasswdEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPasswdEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPasswdEntry" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.widgets.WTextEntry" title="picotui.widgets.WTextEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">WTextEntry</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WPasswdEntry.show_line">
+<span class="sig-name descname"><span class="pre">show_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPasswdEntry.show_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPasswdEntry.show_line" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WPopupList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WPopupList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sel_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPopupList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPopupList" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.widgets.Dialog" title="picotui.widgets.Dialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialog</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WPopupList.OneShotList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OneShotList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPopupList.OneShotList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPopupList.OneShotList" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#picotui.widgets.WListBox" title="picotui.widgets.WListBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">WListBox</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WPopupList.OneShotList.handle_key">
+<span class="sig-name descname"><span class="pre">handle_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPopupList.OneShotList.handle_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPopupList.OneShotList.handle_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WPopupList.OneShotList.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPopupList.OneShotList.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPopupList.OneShotList.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WPopupList.get_choice">
+<span class="sig-name descname"><span class="pre">get_choice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPopupList.get_choice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPopupList.get_choice" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WPopupList.get_selected_value">
+<span class="sig-name descname"><span class="pre">get_selected_value</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPopupList.get_selected_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPopupList.get_selected_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WPopupList.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WPopupList.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WPopupList.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WProgress">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WProgress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WProgress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WProgress" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget" title="picotui.basewidget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">Widget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WProgress.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WProgress.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WProgress.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WProgress.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WProgress.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WProgress.update" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WRadioButton">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WRadioButton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WRadioButton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WRadioButton" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.ItemSelWidget" title="picotui.basewidget.ItemSelWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">ItemSelWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WRadioButton.handle_key">
+<span class="sig-name descname"><span class="pre">handle_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WRadioButton.handle_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WRadioButton.handle_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WRadioButton.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WRadioButton.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WRadioButton.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WRadioButton.redraw">
+<span class="sig-name descname"><span class="pre">redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WRadioButton.redraw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WRadioButton.redraw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="picotui.widgets.WTextEntry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picotui.widgets.</span></span><span class="sig-name descname"><span class="pre">WTextEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WTextEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WTextEntry" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt" title="picotui.editorext.EditorExt"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditorExt</span></code></a>, <a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.EditableWidget" title="picotui.basewidget.EditableWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditableWidget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WTextEntry.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WTextEntry.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WTextEntry.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WTextEntry.handle_cursor_keys">
+<span class="sig-name descname"><span class="pre">handle_cursor_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WTextEntry.handle_cursor_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WTextEntry.handle_cursor_keys" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WTextEntry.handle_edit_key">
+<span class="sig-name descname"><span class="pre">handle_edit_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WTextEntry.handle_edit_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WTextEntry.handle_edit_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WTextEntry.handle_mouse">
+<span class="sig-name descname"><span class="pre">handle_mouse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WTextEntry.handle_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WTextEntry.handle_mouse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WTextEntry.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WTextEntry.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WTextEntry.set" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picotui.widgets.WTextEntry.show_line">
+<span class="sig-name descname"><span class="pre">show_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picotui/widgets.html#WTextEntry.show_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picotui.widgets.WTextEntry.show_line" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="picotui.screen.html" class="btn btn-neutral float-left" title="picotui.screen module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../CHANGELOG.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Paul Sokolovsky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

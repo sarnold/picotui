@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>picotui.screen &mdash; picotui 1.2.3.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=0ad615d5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            picotui
+          </a>
+              <div class="version">
+                1.2.3.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html#sbom-and-license-info">SBOM and license info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../widgets.html">Categories of widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/modules.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">picotui</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">picotui.screen</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for picotui.screen</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">signal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+
+<div class="viewcode-block" id="Screen">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Screen</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Screen.wr">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.wr">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wr</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="c1"># TODO: Update this to use only bytes</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.wr_fixedw">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.wr_fixedw">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wr_fixedw</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="c1"># Write string in a fixed-width field</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:</span><span class="n">width</span><span class="p">]</span>
+        <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span></div>
+
+        <span class="c1"># Doesn&#39;t work here, as it doesn&#39;t advance cursor</span>
+        <span class="c1">#Screen.clear_num_pos(width - len(s))</span>
+
+<div class="viewcode-block" id="Screen.cls">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.cls">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cls</span><span class="p">():</span>
+        <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[2J&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.goto">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.goto">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[</span><span class="si">%d</span><span class="s2">;</span><span class="si">%d</span><span class="s2">H&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Screen.clear_to_eol">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.clear_to_eol">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_to_eol</span><span class="p">():</span>
+        <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[0K&quot;</span><span class="p">)</span></div>
+
+
+    <span class="c1"># Clear specified number of positions</span>
+<div class="viewcode-block" id="Screen.clear_num_pos">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.clear_num_pos">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_num_pos</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[</span><span class="si">%d</span><span class="s2">X&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.attr_color">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.attr_color">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">attr_color</span><span class="p">(</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">bg</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">bg</span> <span class="o">=</span> <span class="n">fg</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
+            <span class="n">fg</span> <span class="o">&amp;=</span> <span class="mh">0xf</span>
+        <span class="k">if</span> <span class="n">bg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">fg</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">):</span>
+                <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[</span><span class="si">%d</span><span class="s2">;1m&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fg</span> <span class="o">+</span> <span class="mi">30</span> <span class="o">-</span> <span class="mi">8</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[</span><span class="si">%d</span><span class="s2">m&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fg</span> <span class="o">+</span> <span class="mi">30</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">bg</span> <span class="o">&lt;=</span> <span class="mi">8</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">fg</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">):</span>
+                <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[</span><span class="si">%d</span><span class="s2">;</span><span class="si">%d</span><span class="s2">;1m&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fg</span> <span class="o">+</span> <span class="mi">30</span> <span class="o">-</span> <span class="mi">8</span><span class="p">,</span> <span class="n">bg</span> <span class="o">+</span> <span class="mi">40</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[0;</span><span class="si">%d</span><span class="s2">;</span><span class="si">%d</span><span class="s2">m&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fg</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">bg</span> <span class="o">+</span> <span class="mi">40</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Screen.attr_reset">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.attr_reset">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">attr_reset</span><span class="p">():</span>
+        <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.cursor">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.cursor">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cursor</span><span class="p">(</span><span class="n">onoff</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">onoff</span><span class="p">:</span>
+            <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[?25h&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Screen</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[?25l&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.draw_box">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.draw_box">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="c1"># Use http://www.utf8-chartable.de/unicode-utf8-table.pl</span>
+        <span class="c1"># for utf-8 pseudographic reference</span>
+        <span class="n">bottom</span> <span class="o">=</span> <span class="n">top</span> <span class="o">+</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span>
+        <span class="c1"># &quot;┌&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xe2\x94\x8c</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># &quot;─&quot;</span>
+        <span class="n">hor</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xe2\x94\x80</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">hor</span><span class="p">)</span>
+        <span class="c1"># &quot;┐&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xe2\x94\x90</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">)</span>
+        <span class="c1"># &quot;└&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xe2\x94\x94</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">hor</span><span class="p">)</span>
+        <span class="c1"># &quot;┘&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xe2\x94\x98</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">top</span> <span class="o">&lt;</span> <span class="n">bottom</span><span class="p">:</span>
+            <span class="c1"># &quot;│&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xe2\x94\x82</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xe2\x94\x82</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="Screen.clear_box">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.clear_box">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="c1"># doesn&#39;t work</span>
+        <span class="c1"># self.wr(b&quot;\x1b[%s;%s;%s;%s$z&quot; % (top + 1, left + 1, top + height, left + width))</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="n">width</span>
+        <span class="n">bottom</span> <span class="o">=</span> <span class="n">top</span> <span class="o">+</span> <span class="n">height</span>
+        <span class="k">while</span> <span class="n">top</span> <span class="o">&lt;</span> <span class="n">bottom</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="Screen.dialog_box">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.dialog_box">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dialog_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_box</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">top</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">draw_box</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+            <span class="c1">#pos = (width - len(title)) / 2</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">pos</span><span class="p">,</span> <span class="n">top</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.init_tty">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.init_tty">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_tty</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">tty</span><span class="o">,</span><span class="w"> </span><span class="nn">termios</span>
+        <span class="n">fd</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">fd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">isatty</span><span class="p">(</span><span class="n">fd</span><span class="p">):</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">org_termios</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+            <span class="n">tty</span><span class="o">.</span><span class="n">setraw</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.deinit_tty">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.deinit_tty">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deinit_tty</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">termios</span>
+        <span class="n">fd</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">fd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">isatty</span><span class="p">(</span><span class="n">fd</span><span class="p">):</span>
+            <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSANOW</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">org_termios</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.enable_mouse">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.enable_mouse">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">enable_mouse</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="c1"># Mouse reporting - X10 compatibility mode</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[?1000h&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.disable_mouse">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.disable_mouse">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">disable_mouse</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="c1"># Mouse reporting - X10 compatibility mode</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[?1000l&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Screen.screen_size">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.screen_size">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">screen_size</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">select</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[18t&quot;</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="mf">0.2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">res</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[8;&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">resp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;t&quot;</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">resp</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></div>
+
+
+    <span class="c1"># Set function to redraw an entire (client) screen</span>
+    <span class="c1"># This is called to restore original screen, as we don&#39;t save it.</span>
+<div class="viewcode-block" id="Screen.set_screen_redraw">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.set_screen_redraw">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_screen_redraw</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">screen_redraw</span> <span class="o">=</span> <span class="n">handler</span></div>
+
+
+<div class="viewcode-block" id="Screen.set_screen_resize">
+<a class="viewcode-back" href="../../api/picotui.screen.html#picotui.screen.Screen.set_screen_resize">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_screen_resize</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGWINCH</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">sig</span><span class="p">,</span> <span class="n">stk</span><span class="p">:</span> <span class="n">handler</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Paul Sokolovsky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

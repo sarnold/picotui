@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>picotui.widgets &mdash; picotui 1.2.3.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=0ad615d5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            picotui
+          </a>
+              <div class="version">
+                1.2.3.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html#sbom-and-license-info">SBOM and license info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../widgets.html">Categories of widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/modules.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">picotui</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">picotui.widgets</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for picotui.widgets</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">.basewidget</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.editorext</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.defs</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;ACTION_OK&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ACTION_CANCEL&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ACTION_NEXT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ACTION_PREV&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;EditableWidget&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dialog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WLabel&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WProgress&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WFrame&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WButton&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WCheckbox&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WRadioButton&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WListBox&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WPopupList&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WDropDown&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WTextEntry&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WPasswdEntry&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WMultiEntry&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WComboBox&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WCompletionList&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WAutoComplete&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<div class="viewcode-block" id="Dialog">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Dialog</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
+
+    <span class="n">finish_on_esc</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot; </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">childs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># On both sides</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">border_w</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">border_h</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus_idx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<div class="viewcode-block" id="Dialog.add">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.add">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># Convert raw string to WLabel</span>
+            <span class="n">widget</span> <span class="o">=</span> <span class="n">WLabel</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+        <span class="n">widget</span><span class="o">.</span><span class="n">set_xy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">childs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+        <span class="n">widget</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="Dialog.autosize">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.autosize">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">autosize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">extra_h</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">wid</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">childs</span><span class="p">:</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">wid</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">wid</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">wid</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">wid</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">border_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">extra_w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">border_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">extra_h</span></div>
+
+
+<div class="viewcode-block" id="Dialog.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Init some state on first redraw</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_idx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">autosize</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">focus_idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_focusable_by_idx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Redraw widgets with cursor off</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialog_box</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">childs</span><span class="p">:</span>
+            <span class="n">w</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="c1"># Then give widget in focus a chance to enable cursor</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="o">.</span><span class="n">set_cursor</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Dialog.find_focusable_by_idx">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.find_focusable_by_idx">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_focusable_by_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_idx</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+        <span class="n">sz</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childs</span><span class="p">)</span>
+        <span class="k">while</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">from_idx</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childs</span><span class="p">[</span><span class="n">from_idx</span><span class="p">],</span> <span class="n">FocusableWidget</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">from_idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">childs</span><span class="p">[</span><span class="n">from_idx</span><span class="p">]</span>
+            <span class="n">from_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">from_idx</span> <span class="o">+</span> <span class="n">direction</span><span class="p">)</span> <span class="o">%</span> <span class="n">sz</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="Dialog.find_focusable_by_xy">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.find_focusable_by_xy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_focusable_by_xy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">childs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">FocusableWidget</span><span class="p">)</span> <span class="ow">and</span> <span class="n">w</span><span class="o">.</span><span class="n">inside</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">i</span><span class="p">,</span> <span class="n">w</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="Dialog.change_focus">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.change_focus">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">change_focus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">widget</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span> <span class="o">=</span> <span class="n">widget</span>
+        <span class="n">widget</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">widget</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="n">widget</span><span class="o">.</span><span class="n">set_cursor</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Dialog.move_focus">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.move_focus">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move_focus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+        <span class="n">prev_idx</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">focus_idx</span> <span class="o">+</span> <span class="n">direction</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus_idx</span><span class="p">,</span> <span class="n">new_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_focusable_by_idx</span><span class="p">(</span><span class="n">prev_idx</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">change_focus</span><span class="p">(</span><span class="n">new_w</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Dialog.handle_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_QUIT</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">key</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_ESC</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">finish_on_esc</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ACTION_CANCEL</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_TAB</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">move_focus</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_SHIFT_TAB</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">move_focus</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_ENTER</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="o">.</span><span class="n">finish_dialog</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="o">.</span><span class="n">finish_dialog</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus_w</span><span class="o">.</span><span class="n">handle_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="n">ACTION_PREV</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">move_focus</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">res</span> <span class="o">==</span> <span class="n">ACTION_NEXT</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">move_focus</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="Dialog.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.Dialog.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="c1"># Work in absolute coordinates</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inside</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">focus_idx</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_focusable_by_xy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1">#            print(w)</span>
+            <span class="k">if</span> <span class="n">w</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">change_focus</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">w</span><span class="o">.</span><span class="n">handle_mouse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WLabel">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WLabel">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WLabel</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valid</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="WLabel.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WLabel.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_B_RED</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_B_GREEN</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr_fixedw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WProgress">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WProgress">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WProgress</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+
+<div class="viewcode-block" id="WProgress.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WProgress.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr_fixedw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WProgress.update">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WProgress.update">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span></div>
+</div>
+
+
+<div class="viewcode-block" id="WFrame">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WFrame">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WFrame</span><span class="p">(</span><span class="n">Widget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">title</span>
+
+<div class="viewcode-block" id="WFrame.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WFrame.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">draw_box</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">:</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">pos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="s2">&quot; </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WButton">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WButton">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WButton</span><span class="p">(</span><span class="n">FocusableWidget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">C_GREEN</span><span class="p">):</span>
+        <span class="n">Widget</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bg_color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">finish_dialog</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="WButton.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WButton.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">disabled</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_WHITE</span><span class="p">,</span> <span class="n">C_GRAY</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_B_WHITE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bg_color</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_BLACK</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bg_color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WButton.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WButton.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">disabled</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">finish_dialog</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">finish_dialog</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WButton.handle_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WButton.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_UP</span> <span class="ow">or</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_LEFT</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ACTION_PREV</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_DOWN</span> <span class="ow">or</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_RIGHT</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ACTION_NEXT</span>
+        <span class="c1"># For dialog buttons (.finish_dialog=True), KEY_ENTER won&#39;t</span>
+        <span class="c1"># reach here.</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_ENTER</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WButton.on_click">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WButton.on_click">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WCheckbox">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WCheckbox">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WCheckbox</span><span class="p">(</span><span class="n">ChoiceWidget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">choice</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="WCheckbox.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WCheckbox.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_B_BLUE</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="s2">&quot;[x] &quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice</span> <span class="k">else</span> <span class="s2">&quot;[ ] &quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WCheckbox.flip">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WCheckbox.flip">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">flip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">choice</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;changed&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WCheckbox.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WCheckbox.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WCheckbox.handle_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WCheckbox.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_UP</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ACTION_PREV</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_DOWN</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ACTION_NEXT</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot; &quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WRadioButton">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WRadioButton">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WRadioButton</span><span class="p">(</span><span class="n">ItemSelWidget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">longest</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="WRadioButton.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WRadioButton.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_B_BLUE</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="s2">&quot;(*) &quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice</span> <span class="o">==</span> <span class="n">i</span> <span class="k">else</span> <span class="s2">&quot;( ) &quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WRadioButton.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WRadioButton.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">choice</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;changed&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WRadioButton.handle_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WRadioButton.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_UP</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">move_sel</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_DOWN</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">move_sel</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WListBox">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WListBox</span><span class="p">(</span><span class="n">EditorExt</span><span class="p">,</span> <span class="n">ChoiceWidget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="n">EditorExt</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">ChoiceWidget</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_items</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="WListBox.set_items">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox.set_items">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">items</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lines</span><span class="p">(</span><span class="n">items</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WListBox.render_line">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox.render_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">render_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+        <span class="c1"># Default identity implementation is suitable for</span>
+        <span class="c1"># items being list of strings.</span>
+        <span class="k">return</span> <span class="n">l</span></div>
+
+
+<div class="viewcode-block" id="WListBox.show_line">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox.show_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="n">hlite</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur_line</span> <span class="o">==</span> <span class="n">i</span>
+        <span class="k">if</span> <span class="n">hlite</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_B_WHITE</span><span class="p">,</span> <span class="n">C_GREEN</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_BLACK</span><span class="p">,</span> <span class="n">C_GREEN</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_line</span><span class="p">(</span><span class="n">l</span><span class="p">)[:</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_num_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">hlite</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WListBox.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_mouse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">choice</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur_line</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;changed&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="WListBox.handle_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">choice</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur_line</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;changed&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="WListBox.handle_edit_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox.handle_edit_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_edit_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="WListBox.set_cursor">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox.set_cursor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">Widget</span><span class="o">.</span><span class="n">set_cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WListBox.cursor">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WListBox.cursor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="c1"># Force off</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WPopupList">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPopupList">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WPopupList</span><span class="p">(</span><span class="n">Dialog</span><span class="p">):</span>
+
+<div class="viewcode-block" id="WPopupList.OneShotList">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPopupList.OneShotList">[docs]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">OneShotList</span><span class="p">(</span><span class="n">WListBox</span><span class="p">):</span>
+
+<div class="viewcode-block" id="WPopupList.OneShotList.handle_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPopupList.OneShotList.handle_key">[docs]</a>
+        <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_ENTER</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">ACTION_OK</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_ESC</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">ACTION_CANCEL</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WPopupList.OneShotList.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPopupList.OneShotList.handle_mouse">[docs]</a>
+        <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_mouse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="c1"># (Processed) mouse click finishes selection</span>
+                <span class="k">return</span> <span class="n">ACTION_OK</span></div>
+</div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">sel_item</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">OneShotList</span><span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">cur_line</span> <span class="o">=</span> <span class="n">sel_item</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">)</span>
+
+<div class="viewcode-block" id="WPopupList.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPopupList.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inside</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">ACTION_CANCEL</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_mouse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WPopupList.get_choice">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPopupList.get_choice">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_choice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">cur_line</span></div>
+
+
+<div class="viewcode-block" id="WPopupList.get_selected_value">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPopupList.get_selected_value">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_selected_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">cur_line</span><span class="p">]</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WDropDown">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WDropDown">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WDropDown</span><span class="p">(</span><span class="n">ChoiceWidget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">dropdown_h</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">items</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropdown_h</span> <span class="o">=</span> <span class="n">dropdown_h</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="WDropDown.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WDropDown.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">focus</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_B_WHITE</span><span class="p">,</span> <span class="n">C_CYAN</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_BLACK</span><span class="p">,</span> <span class="n">C_CYAN</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr_fixedw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">choice</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">DOWN_ARROW</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WDropDown.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WDropDown.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">popup</span> <span class="o">=</span> <span class="n">WPopupList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropdown_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">popup</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="n">ACTION_OK</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">choice</span> <span class="o">=</span> <span class="n">popup</span><span class="o">.</span><span class="n">get_choice</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;changed&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WDropDown.handle_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WDropDown.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle_mouse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WTextEntry">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WTextEntry">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WTextEntry</span><span class="p">(</span><span class="n">EditorExt</span><span class="p">,</span> <span class="n">EditableWidget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">EditorExt</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjust_cursor_eol</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="WTextEntry.get">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WTextEntry.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cur_line</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WTextEntry.set">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WTextEntry.set">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lines</span><span class="p">([</span><span class="n">text</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="WTextEntry.handle_cursor_keys">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WTextEntry.handle_cursor_keys">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_cursor_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_cursor_keys</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="WTextEntry.handle_edit_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WTextEntry.handle_edit_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_edit_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_ENTER</span><span class="p">:</span>
+            <span class="c1"># Don&#39;t treat as editing key</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="n">KEY_BACKSPACE</span><span class="p">:</span>
+                <span class="c1"># Overwrite initial string with new content</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_lines</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_edit_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WTextEntry.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WTextEntry.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_mouse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WTextEntry.show_line">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WTextEntry.show_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span><span class="p">:</span>
+            <span class="n">fg</span> <span class="o">=</span> <span class="n">C_WHITE</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fg</span> <span class="o">=</span> <span class="n">C_BLACK</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">fg</span><span class="p">,</span> <span class="n">C_CYAN</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">show_line</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WPasswdEntry">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPasswdEntry">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WPasswdEntry</span><span class="p">(</span><span class="n">WTextEntry</span><span class="p">):</span>
+
+<div class="viewcode-block" id="WPasswdEntry.show_line">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WPasswdEntry.show_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">show_line</span><span class="p">(</span><span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">i</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WMultiEntry">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WMultiEntry">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WMultiEntry</span><span class="p">(</span><span class="n">EditorExt</span><span class="p">,</span> <span class="n">EditableWidget</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+        <span class="n">EditorExt</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">h</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focus</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+<div class="viewcode-block" id="WMultiEntry.get">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WMultiEntry.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span></div>
+
+
+<div class="viewcode-block" id="WMultiEntry.set">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WMultiEntry.set">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WMultiEntry.show_line">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WMultiEntry.show_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">C_BLACK</span><span class="p">,</span> <span class="n">C_CYAN</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">show_line</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WComboBox">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WComboBox">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WComboBox</span><span class="p">(</span><span class="n">WTextEntry</span><span class="p">):</span>
+
+    <span class="n">popup_class</span> <span class="o">=</span> <span class="n">WPopupList</span>
+    <span class="n">popup_h</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="c1"># w - 1 width goes to Editor widget</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="c1"># We have full requested width, will show arrow symbol as last char</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">items</span>
+
+<div class="viewcode-block" id="WComboBox.redraw">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WComboBox.redraw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">DOWN_ARROW</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WComboBox.get_choices">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WComboBox.get_choices">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_choices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">substr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span></div>
+
+
+<div class="viewcode-block" id="WComboBox.show_popup">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WComboBox.show_popup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">choices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_choices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+        <span class="n">popup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">popup_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">longest</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">popup_h</span><span class="p">,</span> <span class="n">choices</span><span class="p">)</span>
+        <span class="n">popup</span><span class="o">.</span><span class="n">main_widget</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">popup</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="n">ACTION_OK</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">popup</span><span class="o">.</span><span class="n">get_selected_value</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_lines</span><span class="p">([</span><span class="n">val</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">adjust_cursor_eol</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WComboBox.handle_key">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WComboBox.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_DOWN</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">show_popup</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WComboBox.handle_mouse">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WComboBox.handle_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">show_popup</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_mouse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="WCompletionList">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WCompletionList">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WCompletionList</span><span class="p">(</span><span class="n">WPopupList</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="n">Dialog</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">OneShotList</span><span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">)</span>
+        <span class="n">chk</span> <span class="o">=</span> <span class="n">WCheckbox</span><span class="p">(</span><span class="s2">&quot;Prefix&quot;</span><span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">is_prefix_changed</span><span class="p">(</span><span class="n">wid</span><span class="p">):</span>
+            <span class="n">main</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_widget</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="n">main</span><span class="o">.</span><span class="n">get_choices</span><span class="p">(</span><span class="n">main</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">wid</span><span class="o">.</span><span class="n">choice</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">set_lines</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">top_line</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">cur_line</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="n">chk</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;changed&quot;</span><span class="p">,</span> <span class="n">is_prefix_changed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">chk</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="WAutoComplete">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WAutoComplete">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WAutoComplete</span><span class="p">(</span><span class="n">WComboBox</span><span class="p">):</span>
+
+    <span class="n">popup_class</span> <span class="o">=</span> <span class="n">WCompletionList</span>  <span class="c1"># type: ignore</span>
+
+<div class="viewcode-block" id="WAutoComplete.get_choices">
+<a class="viewcode-back" href="../../api/picotui.widgets.html#picotui.widgets.WAutoComplete.get_choices">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_choices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">substr</span><span class="p">,</span> <span class="n">only_prefix</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">substr</span> <span class="o">=</span> <span class="n">substr</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">only_prefix</span><span class="p">:</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">substr</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">choices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">substr</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">choices</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Paul Sokolovsky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

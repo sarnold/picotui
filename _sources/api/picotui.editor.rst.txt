@@ -1,0 +1,7 @@
+picotui.editor module
+=====================
+
+.. automodule:: picotui.editor
+   :members:
+   :undoc-members:
+   :show-inheritance:

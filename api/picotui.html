@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>picotui package &mdash; picotui 1.2.3.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=0ad615d5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="picotui.basewidget module" href="picotui.basewidget.html" />
+    <link rel="prev" title="picotui" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            picotui
+          </a>
+              <div class="version">
+                1.2.3.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html#sbom-and-license-info">SBOM and license info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../widgets.html">Categories of widgets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">picotui</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">picotui package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="picotui.basewidget.html">picotui.basewidget module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.context.html">picotui.context module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.defs.html">picotui.defs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.dialogs.html">picotui.dialogs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.editor.html">picotui.editor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.editorext.html">picotui.editorext module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.menu.html">picotui.menu module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.screen.html">picotui.screen module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.widgets.html">picotui.widgets module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-picotui">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">picotui</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">picotui</a></li>
+      <li class="breadcrumb-item active">picotui package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/picotui.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="picotui-package">
+<h1>picotui package<a class="headerlink" href="#picotui-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="picotui.basewidget.html">picotui.basewidget module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.ChoiceWidget"><code class="docutils literal notranslate"><span class="pre">ChoiceWidget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.ChoiceWidget.get"><code class="docutils literal notranslate"><span class="pre">ChoiceWidget.get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.EditableWidget"><code class="docutils literal notranslate"><span class="pre">EditableWidget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.EditableWidget.get"><code class="docutils literal notranslate"><span class="pre">EditableWidget.get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.FocusableWidget"><code class="docutils literal notranslate"><span class="pre">FocusableWidget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.FocusableWidget.finish_dialog"><code class="docutils literal notranslate"><span class="pre">FocusableWidget.finish_dialog</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.ItemSelWidget"><code class="docutils literal notranslate"><span class="pre">ItemSelWidget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.ItemSelWidget.move_sel"><code class="docutils literal notranslate"><span class="pre">ItemSelWidget.move_sel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget"><code class="docutils literal notranslate"><span class="pre">Widget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.get_input"><code class="docutils literal notranslate"><span class="pre">Widget.get_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.handle_input"><code class="docutils literal notranslate"><span class="pre">Widget.handle_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.inside"><code class="docutils literal notranslate"><span class="pre">Widget.inside()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.longest"><code class="docutils literal notranslate"><span class="pre">Widget.longest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.loop"><code class="docutils literal notranslate"><span class="pre">Widget.loop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.on"><code class="docutils literal notranslate"><span class="pre">Widget.on()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.set_cursor"><code class="docutils literal notranslate"><span class="pre">Widget.set_cursor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.set_xy"><code class="docutils literal notranslate"><span class="pre">Widget.set_xy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.basewidget.html#picotui.basewidget.Widget.signal"><code class="docutils literal notranslate"><span class="pre">Widget.signal()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="picotui.context.html">picotui.context module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.context.html#picotui.context.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="picotui.defs.html">picotui.defs module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.defs.html#picotui.defs.C_PAIR"><code class="docutils literal notranslate"><span class="pre">C_PAIR()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="picotui.dialogs.html">picotui.dialogs module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.dialogs.html#picotui.dialogs.DConfirmation"><code class="docutils literal notranslate"><span class="pre">DConfirmation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.dialogs.html#picotui.dialogs.DConfirmation.result"><code class="docutils literal notranslate"><span class="pre">DConfirmation.result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.dialogs.html#picotui.dialogs.DMultiEntry"><code class="docutils literal notranslate"><span class="pre">DMultiEntry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.dialogs.html#picotui.dialogs.DMultiEntry.result"><code class="docutils literal notranslate"><span class="pre">DMultiEntry.result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.dialogs.html#picotui.dialogs.DTextEntry"><code class="docutils literal notranslate"><span class="pre">DTextEntry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.dialogs.html#picotui.dialogs.DTextEntry.result"><code class="docutils literal notranslate"><span class="pre">DTextEntry.result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.dialogs.html#picotui.dialogs.add_next_prev_buttons"><code class="docutils literal notranslate"><span class="pre">add_next_prev_buttons()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.dialogs.html#picotui.dialogs.add_ok_cancel_buttons"><code class="docutils literal notranslate"><span class="pre">add_ok_cancel_buttons()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="picotui.editor.html">picotui.editor module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor"><code class="docutils literal notranslate"><span class="pre">Editor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.adjust_cursor_eol"><code class="docutils literal notranslate"><span class="pre">Editor.adjust_cursor_eol()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.deinit_tty"><code class="docutils literal notranslate"><span class="pre">Editor.deinit_tty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.handle_cursor_keys"><code class="docutils literal notranslate"><span class="pre">Editor.handle_cursor_keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.handle_edit_key"><code class="docutils literal notranslate"><span class="pre">Editor.handle_edit_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.handle_key"><code class="docutils literal notranslate"><span class="pre">Editor.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.handle_mouse"><code class="docutils literal notranslate"><span class="pre">Editor.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.next_line"><code class="docutils literal notranslate"><span class="pre">Editor.next_line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.redraw"><code class="docutils literal notranslate"><span class="pre">Editor.redraw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.set_cursor"><code class="docutils literal notranslate"><span class="pre">Editor.set_cursor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.set_lines"><code class="docutils literal notranslate"><span class="pre">Editor.set_lines()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.show_line"><code class="docutils literal notranslate"><span class="pre">Editor.show_line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editor.html#picotui.editor.Editor.update_line"><code class="docutils literal notranslate"><span class="pre">Editor.update_line()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="picotui.editorext.html">picotui.editorext module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.CharColorViewer"><code class="docutils literal notranslate"><span class="pre">CharColorViewer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.CharColorViewer.set_def_color"><code class="docutils literal notranslate"><span class="pre">CharColorViewer.set_def_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.CharColorViewer.show_line"><code class="docutils literal notranslate"><span class="pre">CharColorViewer.show_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt"><code class="docutils literal notranslate"><span class="pre">EditorExt</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt.dialog_edit_line"><code class="docutils literal notranslate"><span class="pre">EditorExt.dialog_edit_line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt.get_cur_line"><code class="docutils literal notranslate"><span class="pre">EditorExt.get_cur_line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt.goto_line"><code class="docutils literal notranslate"><span class="pre">EditorExt.goto_line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt.line_visible"><code class="docutils literal notranslate"><span class="pre">EditorExt.line_visible()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt.screen_width"><code class="docutils literal notranslate"><span class="pre">EditorExt.screen_width</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt.show_cursor_status"><code class="docutils literal notranslate"><span class="pre">EditorExt.show_cursor_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.EditorExt.show_status"><code class="docutils literal notranslate"><span class="pre">EditorExt.show_status()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.LineColorViewer"><code class="docutils literal notranslate"><span class="pre">LineColorViewer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.LineColorViewer.set_line_colors"><code class="docutils literal notranslate"><span class="pre">LineColorViewer.set_line_colors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.LineColorViewer.show_line"><code class="docutils literal notranslate"><span class="pre">LineColorViewer.show_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.LineEditor"><code class="docutils literal notranslate"><span class="pre">LineEditor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.LineEditor.edit"><code class="docutils literal notranslate"><span class="pre">LineEditor.edit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.LineEditor.handle_cursor_keys"><code class="docutils literal notranslate"><span class="pre">LineEditor.handle_cursor_keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.LineEditor.handle_key"><code class="docutils literal notranslate"><span class="pre">LineEditor.handle_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.Viewer"><code class="docutils literal notranslate"><span class="pre">Viewer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.editorext.html#picotui.editorext.Viewer.handle_key"><code class="docutils literal notranslate"><span class="pre">Viewer.handle_key()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="picotui.menu.html">picotui.menu module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBar"><code class="docutils literal notranslate"><span class="pre">WMenuBar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBar.close"><code class="docutils literal notranslate"><span class="pre">WMenuBar.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBar.get_item_x"><code class="docutils literal notranslate"><span class="pre">WMenuBar.get_item_x()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBar.handle_key"><code class="docutils literal notranslate"><span class="pre">WMenuBar.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBar.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WMenuBar.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBar.redraw"><code class="docutils literal notranslate"><span class="pre">WMenuBar.redraw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBox"><code class="docutils literal notranslate"><span class="pre">WMenuBox</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBox.handle_key"><code class="docutils literal notranslate"><span class="pre">WMenuBox.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBox.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WMenuBox.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.menu.html#picotui.menu.WMenuBox.redraw"><code class="docutils literal notranslate"><span class="pre">WMenuBox.redraw()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="picotui.screen.html">picotui.screen module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen"><code class="docutils literal notranslate"><span class="pre">Screen</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.attr_color"><code class="docutils literal notranslate"><span class="pre">Screen.attr_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.attr_reset"><code class="docutils literal notranslate"><span class="pre">Screen.attr_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.clear_box"><code class="docutils literal notranslate"><span class="pre">Screen.clear_box()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.clear_num_pos"><code class="docutils literal notranslate"><span class="pre">Screen.clear_num_pos()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.clear_to_eol"><code class="docutils literal notranslate"><span class="pre">Screen.clear_to_eol()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.cls"><code class="docutils literal notranslate"><span class="pre">Screen.cls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.cursor"><code class="docutils literal notranslate"><span class="pre">Screen.cursor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.deinit_tty"><code class="docutils literal notranslate"><span class="pre">Screen.deinit_tty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.dialog_box"><code class="docutils literal notranslate"><span class="pre">Screen.dialog_box()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.disable_mouse"><code class="docutils literal notranslate"><span class="pre">Screen.disable_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.draw_box"><code class="docutils literal notranslate"><span class="pre">Screen.draw_box()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.enable_mouse"><code class="docutils literal notranslate"><span class="pre">Screen.enable_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.goto"><code class="docutils literal notranslate"><span class="pre">Screen.goto()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.init_tty"><code class="docutils literal notranslate"><span class="pre">Screen.init_tty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.screen_size"><code class="docutils literal notranslate"><span class="pre">Screen.screen_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.set_screen_redraw"><code class="docutils literal notranslate"><span class="pre">Screen.set_screen_redraw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.set_screen_resize"><code class="docutils literal notranslate"><span class="pre">Screen.set_screen_resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.wr"><code class="docutils literal notranslate"><span class="pre">Screen.wr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.screen.html#picotui.screen.Screen.wr_fixedw"><code class="docutils literal notranslate"><span class="pre">Screen.wr_fixedw()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="picotui.widgets.html">picotui.widgets module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog"><code class="docutils literal notranslate"><span class="pre">Dialog</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.add"><code class="docutils literal notranslate"><span class="pre">Dialog.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.autosize"><code class="docutils literal notranslate"><span class="pre">Dialog.autosize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.change_focus"><code class="docutils literal notranslate"><span class="pre">Dialog.change_focus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.find_focusable_by_idx"><code class="docutils literal notranslate"><span class="pre">Dialog.find_focusable_by_idx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.find_focusable_by_xy"><code class="docutils literal notranslate"><span class="pre">Dialog.find_focusable_by_xy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.finish_on_esc"><code class="docutils literal notranslate"><span class="pre">Dialog.finish_on_esc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.handle_key"><code class="docutils literal notranslate"><span class="pre">Dialog.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.handle_mouse"><code class="docutils literal notranslate"><span class="pre">Dialog.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.move_focus"><code class="docutils literal notranslate"><span class="pre">Dialog.move_focus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.Dialog.redraw"><code class="docutils literal notranslate"><span class="pre">Dialog.redraw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.EditableWidget"><code class="docutils literal notranslate"><span class="pre">EditableWidget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.EditableWidget.get"><code class="docutils literal notranslate"><span class="pre">EditableWidget.get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WAutoComplete"><code class="docutils literal notranslate"><span class="pre">WAutoComplete</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WAutoComplete.get_choices"><code class="docutils literal notranslate"><span class="pre">WAutoComplete.get_choices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WAutoComplete.popup_class"><code class="docutils literal notranslate"><span class="pre">WAutoComplete.popup_class</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WButton"><code class="docutils literal notranslate"><span class="pre">WButton</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WButton.handle_key"><code class="docutils literal notranslate"><span class="pre">WButton.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WButton.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WButton.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WButton.on_click"><code class="docutils literal notranslate"><span class="pre">WButton.on_click()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WButton.redraw"><code class="docutils literal notranslate"><span class="pre">WButton.redraw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WCheckbox"><code class="docutils literal notranslate"><span class="pre">WCheckbox</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WCheckbox.flip"><code class="docutils literal notranslate"><span class="pre">WCheckbox.flip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WCheckbox.handle_key"><code class="docutils literal notranslate"><span class="pre">WCheckbox.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WCheckbox.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WCheckbox.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WCheckbox.redraw"><code class="docutils literal notranslate"><span class="pre">WCheckbox.redraw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WComboBox"><code class="docutils literal notranslate"><span class="pre">WComboBox</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WComboBox.get_choices"><code class="docutils literal notranslate"><span class="pre">WComboBox.get_choices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WComboBox.handle_key"><code class="docutils literal notranslate"><span class="pre">WComboBox.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WComboBox.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WComboBox.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WComboBox.popup_class"><code class="docutils literal notranslate"><span class="pre">WComboBox.popup_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WComboBox.popup_h"><code class="docutils literal notranslate"><span class="pre">WComboBox.popup_h</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WComboBox.redraw"><code class="docutils literal notranslate"><span class="pre">WComboBox.redraw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WComboBox.show_popup"><code class="docutils literal notranslate"><span class="pre">WComboBox.show_popup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WCompletionList"><code class="docutils literal notranslate"><span class="pre">WCompletionList</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WDropDown"><code class="docutils literal notranslate"><span class="pre">WDropDown</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WDropDown.handle_key"><code class="docutils literal notranslate"><span class="pre">WDropDown.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WDropDown.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WDropDown.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WDropDown.redraw"><code class="docutils literal notranslate"><span class="pre">WDropDown.redraw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WFrame"><code class="docutils literal notranslate"><span class="pre">WFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WFrame.redraw"><code class="docutils literal notranslate"><span class="pre">WFrame.redraw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WLabel"><code class="docutils literal notranslate"><span class="pre">WLabel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WLabel.redraw"><code class="docutils literal notranslate"><span class="pre">WLabel.redraw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox"><code class="docutils literal notranslate"><span class="pre">WListBox</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox.cursor"><code class="docutils literal notranslate"><span class="pre">WListBox.cursor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox.handle_edit_key"><code class="docutils literal notranslate"><span class="pre">WListBox.handle_edit_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox.handle_key"><code class="docutils literal notranslate"><span class="pre">WListBox.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WListBox.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox.render_line"><code class="docutils literal notranslate"><span class="pre">WListBox.render_line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox.set_cursor"><code class="docutils literal notranslate"><span class="pre">WListBox.set_cursor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox.set_items"><code class="docutils literal notranslate"><span class="pre">WListBox.set_items()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WListBox.show_line"><code class="docutils literal notranslate"><span class="pre">WListBox.show_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WMultiEntry"><code class="docutils literal notranslate"><span class="pre">WMultiEntry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WMultiEntry.get"><code class="docutils literal notranslate"><span class="pre">WMultiEntry.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WMultiEntry.set"><code class="docutils literal notranslate"><span class="pre">WMultiEntry.set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WMultiEntry.show_line"><code class="docutils literal notranslate"><span class="pre">WMultiEntry.show_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPasswdEntry"><code class="docutils literal notranslate"><span class="pre">WPasswdEntry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPasswdEntry.show_line"><code class="docutils literal notranslate"><span class="pre">WPasswdEntry.show_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPopupList"><code class="docutils literal notranslate"><span class="pre">WPopupList</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPopupList.OneShotList"><code class="docutils literal notranslate"><span class="pre">WPopupList.OneShotList</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPopupList.OneShotList.handle_key"><code class="docutils literal notranslate"><span class="pre">WPopupList.OneShotList.handle_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPopupList.OneShotList.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WPopupList.OneShotList.handle_mouse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPopupList.get_choice"><code class="docutils literal notranslate"><span class="pre">WPopupList.get_choice()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPopupList.get_selected_value"><code class="docutils literal notranslate"><span class="pre">WPopupList.get_selected_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WPopupList.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WPopupList.handle_mouse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WProgress"><code class="docutils literal notranslate"><span class="pre">WProgress</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WProgress.redraw"><code class="docutils literal notranslate"><span class="pre">WProgress.redraw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WProgress.update"><code class="docutils literal notranslate"><span class="pre">WProgress.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WRadioButton"><code class="docutils literal notranslate"><span class="pre">WRadioButton</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WRadioButton.handle_key"><code class="docutils literal notranslate"><span class="pre">WRadioButton.handle_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WRadioButton.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WRadioButton.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WRadioButton.redraw"><code class="docutils literal notranslate"><span class="pre">WRadioButton.redraw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WTextEntry"><code class="docutils literal notranslate"><span class="pre">WTextEntry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WTextEntry.get"><code class="docutils literal notranslate"><span class="pre">WTextEntry.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WTextEntry.handle_cursor_keys"><code class="docutils literal notranslate"><span class="pre">WTextEntry.handle_cursor_keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WTextEntry.handle_edit_key"><code class="docutils literal notranslate"><span class="pre">WTextEntry.handle_edit_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WTextEntry.handle_mouse"><code class="docutils literal notranslate"><span class="pre">WTextEntry.handle_mouse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WTextEntry.set"><code class="docutils literal notranslate"><span class="pre">WTextEntry.set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="picotui.widgets.html#picotui.widgets.WTextEntry.show_line"><code class="docutils literal notranslate"><span class="pre">WTextEntry.show_line()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-picotui">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-picotui" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="picotui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="picotui.basewidget.html" class="btn btn-neutral float-right" title="picotui.basewidget module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Paul Sokolovsky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

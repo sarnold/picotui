@@ -1,0 +1,26 @@
+picotui package
+===============
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   picotui.basewidget
+   picotui.context
+   picotui.defs
+   picotui.dialogs
+   picotui.editor
+   picotui.editorext
+   picotui.menu
+   picotui.screen
+   picotui.widgets
+
+Module contents
+---------------
+
+.. automodule:: picotui
+   :members:
+   :undoc-members:
+   :show-inheritance:

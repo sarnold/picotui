@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>picotui.editorext &mdash; picotui 1.2.3.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=0ad615d5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            picotui
+          </a>
+              <div class="version">
+                1.2.3.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html#sbom-and-license-info">SBOM and license info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../widgets.html">Categories of widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/modules.html">picotui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">picotui</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">picotui.editorext</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for picotui.editorext</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Extended VT100 terminal text editor, etc. widgets</span>
+<span class="c1"># Copyright (c) 2015 Paul Sokolovsky</span>
+<span class="c1"># Distributed under MIT License</span>
+<span class="c1">#</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.editor</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="c1"># Edit single line, quit on Enter/Esc</span>
+<div class="viewcode-block" id="LineEditor">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.LineEditor">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LineEditor</span><span class="p">(</span><span class="n">Editor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="LineEditor.handle_cursor_keys">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.LineEditor.handle_cursor_keys">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_cursor_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_cursor_keys</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="LineEditor.handle_key">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.LineEditor.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="n">KEY_ENTER</span><span class="p">,</span> <span class="n">KEY_ESC</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">key</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span><span class="p">:</span>
+            <span class="c1"># Overwrite initial string with new content</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_lines</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LineEditor.edit">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.LineEditor.edit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lines</span><span class="p">([</span><span class="n">line</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjust_cursor_eol</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">just_started</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">KEY_ENTER</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Viewer">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.Viewer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Viewer</span><span class="p">(</span><span class="n">Editor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Viewer.handle_key">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.Viewer.handle_key">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="n">KEY_ENTER</span><span class="p">,</span> <span class="n">KEY_ESC</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">key</span>
+        <span class="k">if</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_cursor_keys</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span></div>
+</div>
+
+
+
+<span class="c1"># Viewer with colored lines, (whole line same color)</span>
+<div class="viewcode-block" id="LineColorViewer">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.LineColorViewer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LineColorViewer</span><span class="p">(</span><span class="n">Viewer</span><span class="p">):</span>
+
+<div class="viewcode-block" id="LineColorViewer.show_line">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.LineColorViewer.show_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_dict_color</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines_c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">def_c</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">def_c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">show_line</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LineColorViewer.set_line_colors">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.LineColorViewer.set_line_colors">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_line_colors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_color</span><span class="p">,</span> <span class="n">color_list</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">def_c</span> <span class="o">=</span> <span class="n">default_color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lines_c</span> <span class="o">=</span> <span class="n">color_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_dict_color</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color_list</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># Viewer with color support, (echo line may consist of spans</span>
+<span class="c1"># of different colors)</span>
+<div class="viewcode-block" id="CharColorViewer">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.CharColorViewer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CharColorViewer</span><span class="p">(</span><span class="n">Viewer</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CharColorViewer.show_line">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.CharColorViewer.show_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="c1"># TODO: handle self.margin, self.width</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">span</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">span</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+                <span class="n">span</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">span</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">def_c</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
+            <span class="n">length</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">def_c</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_num_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">length</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_reset</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CharColorViewer.set_def_color">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.CharColorViewer.set_def_color">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_def_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_color</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">def_c</span> <span class="o">=</span> <span class="n">default_color</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="EditorExt">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.EditorExt">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EditorExt</span><span class="p">(</span><span class="n">Editor</span><span class="p">):</span>
+
+    <span class="n">screen_width</span> <span class="o">=</span> <span class="mi">80</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="c1"># +1 assumes there&#39;s a border around editor pane</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_y</span> <span class="o">=</span> <span class="n">top</span> <span class="o">+</span> <span class="n">height</span> <span class="o">+</span> <span class="mi">1</span>
+
+<div class="viewcode-block" id="EditorExt.get_cur_line">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.EditorExt.get_cur_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_cur_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cur_line</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="EditorExt.line_visible">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.EditorExt.line_visible">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">line_visible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_line</span> <span class="o">&lt;=</span> <span class="n">no</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_line</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span></div>
+
+
+    <span class="c1"># If line &quot;no&quot; is already on screen, just reposition cursor to it and</span>
+    <span class="c1"># return False. Otherwise, show needed line either at the center of</span>
+    <span class="c1"># screen or at the top, and return True.</span>
+<div class="viewcode-block" id="EditorExt.goto_line">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.EditorExt.goto_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">goto_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cur_line</span> <span class="o">=</span> <span class="n">no</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_visible</span><span class="p">(</span><span class="n">no</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">no</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_line</span>
+            <span class="k">if</span> <span class="n">col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjust_cursor_eol</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_cursor</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">center</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">no</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">top_line</span> <span class="o">=</span> <span class="n">no</span> <span class="o">-</span> <span class="n">c</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">top_line</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">no</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">top_line</span> <span class="o">=</span> <span class="n">no</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adjust_cursor_eol</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redraw</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="EditorExt.show_status">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.EditorExt.show_status">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">status_y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_to_eol</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_cursor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EditorExt.show_cursor_status">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.EditorExt.show_cursor_status">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_cursor_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wr</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">% 3d</span><span class="s2">:</span><span class="si">% 3d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cur_line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_cursor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EditorExt.dialog_edit_line">
+<a class="viewcode-back" href="../../api/picotui.editorext.html#picotui.editorext.EditorExt.dialog_edit_line">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dialog_edit_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screen_width</span> <span class="o">-</span> <span class="n">width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialog_box</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">LineEditor</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">top</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="c1">#content = f.readlines()</span>
+
+
+<span class="c1">#os.write(1, b&quot;\x1b[18t&quot;)</span>
+<span class="c1">#key = os.read(0, 32)</span>
+<span class="c1">#print(repr(key))</span>
+
+<span class="c1">#key = os.read(0, 32)</span>
+<span class="c1">#print(repr(key))</span>
+<span class="c1">#1/0</span>
+
+    <span class="n">e</span> <span class="o">=</span> <span class="n">EditorExt</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">init_tty</span><span class="p">()</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">enable_mouse</span><span class="p">()</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">dialog_edit_line</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Enter name:&quot;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">cls</span><span class="p">()</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">deinit_tty</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+
+<span class="c1">#    e.cls()</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">draw_box</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">set_lines</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+    <span class="n">e</span><span class="o">.</span><span class="n">deinit_tty</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Paul Sokolovsky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
